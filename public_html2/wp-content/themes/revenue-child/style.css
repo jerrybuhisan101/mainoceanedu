@@ -1,0 +1,57 @@
+/*
+ Theme Name:   Revenue Child
+ Theme URI:    http://example.com/twenty-fifteen-child/
+ Description:  Twenty Fifteen Child Theme
+ Author:       Jerry
+ Author URI:   http://example.com
+ Template:     revenue
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+ Text Domain:  revenue-child
+*/
+
+#page {
+  background: #ffffff !important;
+}
+
+.site-header{
+      border-bottom: 1px solid #e9e9e9 !important;
+}
+
+.entry-header h1 {
+  display: none;
+}
+
+iframe { overflow:hidden; }
+
+li#wp-admin-bar-happythemes{
+      display:none !important;
+    } 
+
+ .site-content{
+ 	padding-top: 0px !important;
+ }   
+
+ .navxt {
+ 	margin-top: 8px;
+    margin-bottom: -13px;
+    font-size: 14px;
+    font-weight: bold;
+ }
+
+ .elementor-6{
+ 	padding-top: 2% !important;
+ }
+
+ .slicknav_nav, .header-search, .sf-menu li a:before {
+ 	border-color: #32a5e0 !important;
+ }
+
+ #site-bottom {
+ 	    background-color: #00b3f1;
+    color: #ffffff;
+    font-size: 13px;
+    padding: 20px 0;
+ }
