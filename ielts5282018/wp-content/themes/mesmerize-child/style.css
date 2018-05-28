@@ -1,0 +1,587 @@
+/* 
+Theme Name: Mesmerize Ielts
+Theme URI: http://ielts.ocean.edu.vn
+Description: Mesmerize child theme
+Author: Jerry Cris Buhisan
+Author URI: http://petamaz.com
+Template: mesmerize
+Version: 0.1
+*/
+
+.header-top-bar {
+	background: #008fd4;
+	background: -moz-linear-gradient(left, #008fd4 0%, #00aeef 100%);
+	background: -webkit-linear-gradient(left, #008fd4 0%, #00aeef 100%);
+	background: linear-gradient(to right, #008fd4 0%, #00aeef 100%);
+}
+
+.footer-content {
+	/*background: #272727;*/
+	background: #36393e;
+}
+
+.footer-simple {
+	padding-bottom: 0px !important;
+}
+
+ul.list-bottom li a, ul.list-bottom2 li a {
+	text-decoration: none !important;
+}
+
+.top-bar-field i.fa {
+	color: #ffffff !important;
+}
+
+.counters-2 {
+	   /* background-color: #00a1e4 !important;
+    background:  linear-gradient( #00a1e4, #00a1e4a1), url(http://freefrontend.com/assets/img/css-background-patterns/css-pattern-with-css-blend-mode.png) no-repeat;
+    background-position: center;*/
+        background-color: #f6f6f6 !important;
+    background-size: cover;
+}
+
+i.fa {
+color:#ffffff;
+}
+
+/*Contact Form*/
+.wpcf7 {
+	padding: 35px !important;
+	border: 1px solid #6d64513d !important;
+	width: 75% !important;
+	margin: 0 auto !important;
+}
+
+input.wpcf7-form-control, select.wpcf7-form-control, textarea.wpcf7-form-control {
+	border: 1px solid #ccc !important;
+	border-radius: 4px !important;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075) !important;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075) !important;
+}
+
+[data-parallax-depth]:after, [data-parallax-depth]:before {
+	background: #0090d594;
+}
+
+.description-container {
+	text-align: center !important;
+}
+
+.header-content .align-holder h1.hero-title {
+	font-size: 3.5rem;
+}
+
+.col-xs .hero-title, .col-xs-12 .hero-title {
+	font-size: 30px;
+	text-transform: uppercase !important;
+	font-weight: bold !important;
+}
+
+.sidebar .widget>ul>li a {
+	color: #00b3f1 !important;
+}
+
+body {
+	color: #313439 !important;
+}
+
+|
+h3 .post-title {
+	font-size: 23px !important;
+	line-height: 1.2 !important;
+	padding-bottom: 13px !important;
+	font-weight: bold !important;
+}
+
+.button.color1 {
+	color: #fff;
+	background-color: #ee1c25 !important;
+	border-color: #ee1c25 !important;
+	border-radius: 7px !important;
+	box-shadow: 3px 5px #4a4a4a !important;
+}
+
+.button.round {
+	color: #fff;
+	background-color: #ee1c25 !important;
+	border-color: #ee1c25 !important;
+	border-radius: 7px !important;
+	box-shadow: 3px 5px #4a4a4a !important;
+}
+
+/*End of Contact Form*/
+
+/*end of custom*/
+
+/*Custom Code for pages categories*/
+.column-1a {
+float: left;
+    width: 49%;
+    padding: 15px;
+    height: 612px;
+    box-sizing: border-box;
+    /* border-left: 8px solid white; */
+    border-radius: 3px;
+    border: 1px solid #dcd7d7;
+    margin-left: 7px;
+}
+
+/* Clear floats after the column-1as */
+.row-1a:after {
+	content: "";
+	display: table;
+	clear: both;
+	box-sizing: border-box;
+}
+
+/* Responsive layout - makes the three column-1as stack on top of each other instead of next to each other */
+@media screen and (max-width:600px) {
+	.column-1a {
+		width: 100%;
+		height: auto;
+		text-align: left;
+	}
+
+	ul.tabbybutton li.tabbyli {
+		display: block;
+		width: auto;
+		margin-top: 14%;
+	}
+
+}
+
+/*End of responsive*/
+
+/*tabby custom*/
+.tabcontent {
+	padding-bottom: 2% !important;
+}
+
+.responsive-tabs__list__item--active {
+	background: #ff0000 !important;
+	color: #f6f7f9 !important;
+	font-weight: bold;
+}
+
+.responsive-tabs ul.responsive-tabs__list {
+	background: url(http://ielts.ocean.edu.vn/wp-content/uploads/2018/03/lit_tab.png) bottom no-repeat;
+	background-size: 100%;
+}
+
+.tabcontent {
+	border: none !important
+}
+
+.responsive-tabs-wrapper .responsive-tabs ul.responsive-tabs__list .responsive-tabs .responsive-tabs__list__item {
+	background: #8d8d8d;
+	color: white;
+	font-size: 18px;
+	font-size: bold;
+	font-weight: bold;
+}
+
+.tabbybutton {
+	padding-top: 8%;
+}
+
+a.tabbya {
+	padding: 13px;
+	background: #ec1f1f;
+	border-radius: 5px;
+	color: white;
+	text-decoration: none;
+	text-transform: capitalize;
+	margin-left: 2%;
+	box-shadow: 2px 3px #8c8c8c;
+}
+
+ul.tabbybutton li.tabbyli {
+	display: inline-block;
+	width: 193px;
+	margin-top: none;
+}
+
+
+.footer a {
+
+	color:#ffffff !important;
+}
+
+
+
+
+
+.footer {
+	margin-top: -2% !important;
+}
+
+#testimonials-5{
+padding-bottom: 4% !important;
+}
+
+#team-2{
+	background: #f6f6f6 !important;
+}
+
+.section-title-col h2 {
+    font-weight: bold;
+    font-size: 36px;
+}
+
+
+
+.inner-header-description{
+	display: none;
+}
+
+
+.post-title{
+	    font-size: 19px;
+    line-height: 1.7;
+    padding-bottom: 4%;
+    text-align: center;
+}
+
+.post-excerpt p {
+	    text-align: center;
+    font-size: 15px;
+}
+
+
+h5.widgettitle{
+	text-align: center;
+}
+
+.sidebar .widget>ul>li a {
+	    color: #0091d5 !important;
+    font-size: 15px;
+}
+
+
+
+nav.post-navigation{
+	display: none;
+}
+
+
+.post-content-single h1{
+	font-size: 28px;
+    color: #0090d4;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+
+address.add-bottom {
+	font-style: normal;
+    color: white;
+}
+
+.footer-simple .footer-content {
+	color:#ffffff !important;
+	font-size: 14px !important;
+}
+
+
+.post-comments, .comments-form{
+	display: none;
+}
+
+
+/*FORM*/
+
+input, select, textarea {
+    background-color: #fff;
+        border: 1px solid #3134398c !important;
+}
+
+form{
+    padding: 24px;
+    border: 1px solid #00000054;
+        background: #edf0f3;
+}
+.card .large-padding {
+padding:0 !important;
+}
+select {
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #80808042;
+    border-radius: 0 !important;
+    margin-bottom: 2%;
+    color:#000000ad !important;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="date"], input[type="url"], input[type="tel"], textarea {
+margin-bottom: 1px !important;
+    border-radius: 0 !important;
+
+}
+
+
+
+h3.formh3{
+    text-align: center;
+    padding: 13px;
+   /* color: black !important;*/
+   color: #636363 !important;
+    
+}
+
+input[type="submit"]
+{
+        padding: 7px 27px;
+ background: #d60505 !important;
+    border: 1px;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+h3.formh3{
+	text-align: center;
+    font-weight: bold;
+}
+
+.contact-form-wrapper input[type=date], .contact-form-wrapper input[type=email], .contact-form-wrapper input[type=tel], .contact-form-wrapper input[type=text], .contact-form-wrapper input[type=url], .contact-form-wrapper select, .contact-form-wrapper textarea {
+	box-shadow: none !important;
+}
+
+.ss-q-title {
+
+	letter-spacing: 1px !important;
+/*    font-family: 'sans-serif' !important;*/
+    font-weight: unset !important;
+    text-transform: none !important;
+    padding-top: 1% !important;
+    padding-bottom: 1% !important;
+}
+
+.mesmerize-inner-page .page-content, .mesmerize-inner-page .content, .mesmerize-front-page.mesmerize-content-padding .page-content {
+	background-color: #ffffff !important;
+}
+
+
+.navigation-bar{
+	background: #ffffff !important;
+
+}
+
+@media (min-width: 768px) {
+
+	ul.dropdown-menu>li>a {
+		color: #00B3F1 !important;
+		font-size: 12px !important;
+	}
+
+.content-section-spacing {
+padding-top: 49px !important;
+}
+	
+}
+
+.header-wrapper .header-homepage .backstretch {
+		    top: 117px;
+	}
+
+.bacstretch {
+	top:0px;
+}
+
+.section-title-col h2 {
+	font-size: 30px !important;
+}
+
+.content-section p {
+	font-size: 16px !important;
+}
+
+p.text-center {
+	line-height: 1.8 !important;
+}
+
+
+[data-parallax-depth] {
+  background-attachment: scroll !important;
+}
+
+[data-parallax-depth]:before, [data-parallax-depth]:after {
+  background-attachment: scroll !important;
+}
+
+.card.large-padding {
+	padding:0px !important;
+}
+/*END FORM*/
+
+
+
+.color2{
+	color:#00b3f1 !important
+}
+
+.color2:after {
+content: "";
+    display: block;
+    margin: 0 auto;
+    width: 8%;
+    padding-top: 9px;
+    border-bottom: 5px solid #ee1c25;
+}
+
+.counters-2 .gridContainer .row .space-bottom {
+	/*color:#ffffff;*/
+	color: #313439;
+}
+
+.counters-2 .gridContainer .row .space-bottom p {
+	/*color:#ffffff !important;*/
+	color:#636363 !important;
+}
+
+
+
+/* Images */
+.counters-2 .gridContainer .row .space-bottom img.custom-image {
+	width: 53%;
+}
+
+
+/*h2*/
+
+.section-title-col h2 {
+	color: #ee1c25;
+	/*font-weight: 400;*/
+}
+
+.section-title-col h2:after{
+
+/*content: "";
+    display: block;
+    margin: 0 auto;
+    width: 15%;
+    padding-top: 6px;
+    border-bottom: 2px solid #4a4a4a;*/
+
+ 
+}
+
+
+
+
+p {
+	color:#636363 !important;
+}
+
+
+/*custom code 12-05-2018*/
+
+p.header-subtitle {
+	color:#ffffff !important;
+}
+
+
+.card.bordered, .post-item table.card, .card[class*="bottom-border-"] {
+	  /*  border: 1px solid #ff3369 !important;*/
+}
+
+.contact-1:before {
+	background-color: #de0000 !important;
+}
+
+.card.bordered, .post-item table.card, .card[class*="bottom-border-"] {
+	border: 1px solid #d000373d !important;
+    box-shadow: 0px 0px 3px 0 rgba(189, 189, 189, 0.4), 0px 2px 3px 0 rgba(189, 189, 189, 0.3), 0 2px 3px rgba(0, 0, 0, 0.08) !important;
+}
+
+/*Contact Us*/
+
+.contact-1:before {
+    background-color: rgba(26, 26, 26, 0) !important;
+}
+
+.contact-1 {
+
+		background: linear-gradient(110deg, #d00911 86%, #c10010 50%) !important;
+    position: relative !important;
+}
+
+.footer-credit{
+	    background: #23282e !important;
+    font-size: 12px;
+}
+
+.post-thumbnail img {
+	width: 424px;
+    max-width: 100%;
+    height: 269px;
+    max-height: 100%;
+}
+
+.navigation .nav-links .next-navigation i.fa {
+	    color: #ff0000;
+}
+
+
+.site > .content {
+	    padding-top: 2rem !important;
+    padding-bottom: 6rem;
+}
+
+.header-top{
+	box-shadow: 3px 0px 8px 1px #888888ab;
+}
+/*End of Contact Us*/
+
+/*Navigation*/
+.nav-links .numbers-navigation span.current, .post-comments .navigation .numbers-navigation span.current, .nav-links .numbers-navigation a:hover, .post-comments .navigation .numbers-navigation a:hover{
+	background-color:red;
+}
+
+.navigation-c .navigation .nav-links .prev-navigation a, .post-comments .navigation .prev-navigation a, .nav-links .next-navigation a, .post-comments .navigation .next-navigation a{
+border: solid 2px #f9002e;
+}
+
+.nav-links .prev-navigation a:hover, .post-comments .navigation .prev-navigation a:hover, .nav-links .next-navigation a:hover, .post-comments .navigation .next-navigation a:hover {
+	background-color: #e0e1e1;
+    color: #ffffff;
+    border: solid 2px #f9002e;
+}
+
+
+
+.page-numbers{
+	color:red;
+}
+
+
+/*previous*/
+.nav-links .prev-navigation a i, .post-comments .navigation .prev-navigation a i, .nav-links .next-navigation a i, .post-comments .navigation .next-navigation a i{
+	color:red;
+}
+
+
+.read-more{
+	color: #03a9f4 !important;
+}
+.widgettitle{
+	color: #0095d9 !important;
+}
+
+.mesmerize-content-padding #page > .page-content, .mesmerize-inner-page #page > .page-content {
+	    padding-top: 2rem;
+}
+
+.wpcf7 {
+	border:none !important;
+}
+form{
+
+     border: 1px solid #edf0f3 !important;
+}
+
+.blog-page, .post-page{
+background-color: #e9ebee !important;
+}
+/*End of navigation*/
+/*end of custom code 12-05-2018*/
