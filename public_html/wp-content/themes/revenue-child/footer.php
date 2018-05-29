@@ -51,7 +51,7 @@
 
 			<div class="site-info">
 
-				<p>Copyright 2018 - Jerry Cris Buhisan.
+				<p>Copyright 2018 - Ocean Edu Vietnam.
 			</div><!-- .site-info -->
 
 			<?php 

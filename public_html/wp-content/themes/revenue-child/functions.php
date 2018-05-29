@@ -62,6 +62,21 @@ function custom_dashboard_help() {
 echo '<p>Hi There Ocean Edu Learners!, We welcome you to our students resource center website where useful information and supplemental tool can be found. We live in our motto to turn on your potential.</p>';
 }
 
+
+#DASHBOARD 2
+add_action('wp_dashboard_setup', 'my_custom_dashboard_widgets2');
+  
+function my_custom_dashboard_widgets2() {
+global $wp_meta_boxes;
+ 
+wp_add_dashboard_widget('custom_help_widget2', 'Learn How To Use', 'custom_dashboard_help2');
+}
+ 
+function custom_dashboard_help2() {
+echo '<p>View our students/parents manual:</p> <a href = "http://students.ocean.edu.vn/manual.pdf" target="_blank">Click Here</a>';
+}
+
+
 #REMOVE REGISTRATION
 add_filter('register','no_register_link');
 function no_register_link($url){
