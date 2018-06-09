@@ -50,8 +50,12 @@ li#wp-admin-bar-happythemes{
  }
 
  #site-bottom {
- 	    background-color: #00b3f1;
+ 	    background-color:#333333;
     color: #ffffff;
     font-size: 13px;
     padding: 20px 0;
  }
+
+ .site-main {
+
+}
