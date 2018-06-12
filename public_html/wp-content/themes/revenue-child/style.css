@@ -17,7 +17,16 @@
 }
 
 .site-header{
-      border-bottom: 1px solid #e9e9e9 !important;
+      /*border-bottom: 1px solid #e9e9e9 !important;*/
+          padding-top: 8px;
+    margin: 0 auto;
+    position: relative;
+    height: 93px;
+    background-image: url(http://ocean.i-learn.vn/lms2/theme/ocean/images/bg-top.gif) !important;
+    background-position: center top;
+    background-repeat: repeat-x;
+    z-index: 1;
+    border-bottom: 5px solid #00c9ff;
 }
 
 .entry-header h1 {
@@ -50,12 +59,43 @@ li#wp-admin-bar-happythemes{
  }
 
  #site-bottom {
- 	    background-color:#333333;
+ 	    background: linear-gradient(to right,rgba(0,141,208,1) 0%,rgba(41,137,216,1) 0%,rgba(0,175,239,1) 46%,rgba(0,175,239,1) 53%,rgba(0,119,185,1) 100%);
     color: #ffffff;
     font-size: 13px;
     padding: 20px 0;
+    border-top: 5px solid #00c9ff !important;
  }
 
  .site-main {
 
+}
+
+nav .menu-menu-container ul.sf-menu li a {
+color:#ffffff;
+}
+
+.sf-menu li.current-menu-item a {
+  color:#2baae1 !important;
+}
+
+nav .menu-menu-container ul.sf-menu li a:hover {
+  color:black !important;
+}
+
+nav .menu-primary-container ul.sf-menu li a {
+color:#ffffff;
+}
+
+nav .menu-primary-container ul.sf-menu li a:hover {
+color:black !important;
+}
+
+/*Teens*/
+
+nav .menu-main-container ul.sf-menu li a {
+color:#ffffff;
+}
+
+nav .menu-main-container ul.sf-menu li a:hover {
+color:black !important;
 }
