@@ -26,7 +26,7 @@
     background-position: center top;
     background-repeat: repeat-x;
     z-index: 1;
-    border-bottom: 5px solid #00c9ff;
+    /*border-bottom: 5px solid #00c9ff;*/
 }
 
 .entry-header h1 {
