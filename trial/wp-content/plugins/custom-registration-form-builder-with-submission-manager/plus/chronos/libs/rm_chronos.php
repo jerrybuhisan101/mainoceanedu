@@ -70,7 +70,7 @@ class RM_Chronos {
         
         //if((time() - (int)$rm_automation_intro_time) <= $thirty_days )
         //$menu_title .= "&nbsp;<span class='update-plugins'><span class='update-count'>New</span></span>";
-        add_submenu_page("","Automation", $menu_title, "manage_options", "rm_ex_chronos_manage_tasks",  "RM_Chronos::handle_request" );
+        add_submenu_page("rm_form_manage","Automation", $menu_title, "manage_options", "rm_ex_chronos_manage_tasks",  "RM_Chronos::handle_request" );
         add_submenu_page("","RM Chronos 3", "<em>RM Chronos 3</em>", "manage_options", "rm_ex_chronos_edit_task",  "RM_Chronos::handle_request" );
     }
     

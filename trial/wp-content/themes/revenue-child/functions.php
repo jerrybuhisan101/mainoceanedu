@@ -78,10 +78,7 @@ echo '<p>View our students/parents manual:</p> <a href = "http://students.ocean.
 
 
 #REMOVE REGISTRATION
-add_filter('register','no_register_link');
-function no_register_link($url){
-    return '';
-}
+
 
 
 /**

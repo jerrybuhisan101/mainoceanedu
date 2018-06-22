@@ -95,10 +95,11 @@ $settings = new RM_Options;
         </div>
         
         <div class="rm-grid-section rm-dbfl rm_publish_section" id="rm_publish_otp">
-            <div class="rm-directory-container dbfl">OTP (One-time password) system is built into RegistrationMagic. It allows issuing temporary one-time usable passwords to users who do not have user accounts on your site. OTP system works seamlessly with RegistrationMagic Login Widget in <a href="<?php echo admin_url("widgets.php");?>" target="_blank">Appearance --> Widgets</a> and Login link in Magic PopUp Menu, which can be turned on by going to <a href="?page=rm_options_fab" target="_blank"> Global Settings --> Magic Popup Button</a>.<br/><br/>
+            <div class="rm-directory-container dbfl">
+           When you use forms which do not create WordPress user accounts, like a contact or an enquiry form, users still have option to login on your site's frontend and check their submissions. RegistrationMagic handles it using an ingenious OTP (One Time Password) system. When logging in, RegistrationMagic checks if the email address entered was used in a form submission in past. If it was, and there's no user account for the user, it will create and send a provisional password to user's email address. This password can only be used once and allows normal access to RegistrationMagic's user account area.
 
-<b>Here's how it works -</b> When user enters email in the login box, RegistrationMagic checks if the users has an account on the site. If an account is found, user is asked to enter password in the next step. If an account is not found, RegistrationMagic generates a temporary one-time password and emails it to the user. User is prompted to check his/ her email. By using that password, the user can log into a restricted area of the site and check form submissions from the email ID used to login.
-        </div>
+           <br><br>OTP works seamlessly through Login Widget in <a href="<?php echo admin_url("widgets.php");?>" target="_blank">Appearance --> Widgets</a> and Login link in Magic PopUp Menu, which can be turned on by going to <a href="?page=rm_options_fab" target="_blank"> Global Settings --> Magic Popup Button</a> Button.
+            </div>
         </div>
         
         <div class="rm-grid-section rm-dbfl rm_publish_section" id="rm_publish_login">

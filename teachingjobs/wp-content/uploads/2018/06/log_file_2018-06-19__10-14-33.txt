@@ -1,0 +1,65 @@
+
+---Downloaded files---
+The import files for: Theme Demo Content were successfully downloaded!
+Initial max execution time = 30
+Files info:
+Site URL = http://localhost/wordpress
+Data file = D:\xampp\htdocs\wordpress/wp-content/themes/business-kit/includes/demo/demo-content/content.xml
+Widget file = D:\xampp\htdocs\wordpress/wp-content/themes/business-kit/includes/demo/demo-content/widget.wie
+Customizer file = D:\xampp\htdocs\wordpress/wp-content/themes/business-kit/includes/demo/demo-content/customizer.dat
+Redux files:
+not defined!
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+---Importing widgets---
+Sidebar : 
+
+Search - No Title - Widget already exists
+Recent Posts - No Title - Widget already exists
+Archives - No Title - Widget already exists
+Categories - No Title - Widget already exists
+Meta - No Title - Widget already exists
+
+Home Page Widget Area : 
+
+BK: About Us - Number Of Services On Your Favor - Imported
+BK: Features - No Title - Imported
+BK: CTA - Do You want startup in Business ? - Imported
+BK: Services - We Offer Our Best To You! - Imported
+TT: Team - We Are Always Ready To Help You! - Imported
+TT: Portfolio - Find Out Our Interesting Works! - Imported
+TT: Partners - No Title - Imported
+TT: Testimonials - What Other’s Has To Say About Us ? - Imported
+BK: Latest News - What’s New In Blogs? - Imported
+
+Footer 1 : 
+
+Text - About Us - Imported
+BK: Social - No Title - Imported
+
+Footer 2 : 
+
+Text - Contact Info - Imported
+
+Footer 3 : 
+
+Tag Cloud - Popular Tags - Imported
+
+Footer 4 : 
+
+Recent Posts - Recent Posts - Imported
+
+
+
+---Importing customizer settings---
+Customizer settings import finished!
+
+---pt-ocdi/after_import---
+
