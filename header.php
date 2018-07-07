@@ -1,192 +1,199 @@
 <?php
 /**
- * The header for our theme.
+ * The header for our theme
  *
  * This is the template that displays all of the <head> section and everything up until <div id="content">
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package revenue
+ * @package Business_Kit
  */
 
-?><!DOCTYPE html>
+?>
+<!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="HandheldFriendly" content="true">
-<link rel="profile" href="http://gmpg.org/xfn/11">
-<?php if (get_theme_mod('favicon', '') != null) { ?>
-<link rel="icon" type="image/png" href="<?php echo esc_url( get_theme_mod('favicon', '') ); ?>" />
-<?php } ?>
-<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-<?php wp_head(); ?>
-<?php
-	$primary_font = 'Roboto';
-	$secondary_font = 'Roboto';
-	$primary_color = get_theme_mod('primary-color', '#2baae1');
-	$secondary_color = get_theme_mod('secondary-color', '#ff6644');	
-?>
-<style type="text/css" media="all">
-	body,
-	input,
-	input[type="text"],
-	input[type="email"],
-	input[type="url"],
-	input[type="search"],
-	input[type="password"],
-	textarea,
-	table,
-	.sidebar .widget_ad .widget-title,
-	.site-footer .widget_ad .widget-title {
-		font-family: "<?php echo $primary_font; ?>", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	}
-	#secondary-menu li a,
-	.footer-nav li a,
-	.pagination .page-numbers,
-	button,
-	.btn,
-	input[type="submit"],
-	input[type="reset"],
-	input[type="button"],
-	.comment-form label,
-	label,
-	h1,h2,h3,h4,h5,h6 {
-		font-family: "<?php echo $secondary_font; ?>", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	}
-	a:hover,
-	.site-header .search-icon:hover span,
-	.sf-menu li a:hover,
-	.sf-menu li li a:hover,
-	.sf-menu li.sfHover a,
-	.sf-menu li.current-menu-item a,
-	.sf-menu li.current-menu-item a:hover,
-	.breadcrumbs .breadcrumbs-nav a:hover,
-	.read-more a,
-	.read-more a:visited,
-	.entry-title a:hover,
-	article.hentry .edit-link a,
-	.author-box a,
-	.page-content a,
-	.entry-content a,
-	.comment-author a,
-	.comment-content a,
-	.comment-reply-title small a:hover,
-	.sidebar .widget a,
-	.sidebar .widget ul li a:hover {
-		color: <?php echo $primary_color; ?>;
-	}
-	button,
-	.btn,
-	input[type="submit"],
-	input[type="reset"],
-	input[type="button"],
-	.entry-category a,
-	.pagination .prev:hover,
-	.pagination .next:hover,
-	#back-top a span {
-		background-color: <?php echo $primary_color; ?>;
-	}
-	.read-more a:hover,
-	.author-box a:hover,
-	.page-content a:hover,
-	.entry-content a:hover,
-	.widget_tag_cloud .tagcloud a:hover:before,
-	.entry-tags .tag-links a:hover:before,
-	.content-loop .entry-title a:hover,
-	.content-list .entry-title a:hover,
-	.content-grid .entry-title a:hover,
-	article.hentry .edit-link a:hover,
-	.site-footer .widget ul li a:hover,
-	.comment-content a:hover {
-		color: <?php echo $secondary_color; ?>;
-	}	
-	#back-top a:hover span,
-	.bx-wrapper .bx-pager.bx-default-pager a:hover,
-	.bx-wrapper .bx-pager.bx-default-pager a.active,
-	.bx-wrapper .bx-pager.bx-default-pager a:focus,
-	.pagination .page-numbers:hover,
-	.pagination .page-numbers.current,
-	.sidebar .widget ul li:before,
-	.widget_newsletter input[type="submit"],
-	.widget_newsletter input[type="button"],
-	.widget_newsletter button {
-		background-color: <?php echo $secondary_color; ?>;
-	}
-	.slicknav_nav,
-	.header-search,
-	.sf-menu li a:before {
-		border-color: <?php echo $secondary_color; ?>;
-	}
-</style>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 
-	<header id="masthead" class="site-header clear">
+	<header id="masthead" class="site-header">
+
+		<?php 
+		// For top header
+		$header_status = business_kit_get_option( 'show_top_header' );
+		
+		if ( 1 == $header_status ) {
+		
+			$top_address    = business_kit_get_option( 'top_address' );
+			$top_phone      = business_kit_get_option( 'top_phone' );
+			$top_email      = business_kit_get_option( 'top_email' );
+
+			$left_section  	= business_kit_get_option( 'left_section' );
+			$right_section  = business_kit_get_option( 'right_section' );
+
+			?>
+		    <div class="top-header">
+
+		        <div class="container">
+
+		            <div class="top-header-content">
+		                
+		                <div class="top-info-left">
+
+		                	<?php 
+		                	if( 'contact' == $left_section && ( !empty( $top_address ) || !empty( $top_phone ) || !empty( $top_email ) ) ){ ?>
+
+		                	    <div class="top-contact-info">
+		                	        <?php if( !empty( $top_address ) ){ ?>
+		                	            <span class="address"><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo esc_html( $top_address ); ?></span>
+		                	        <?php } ?>
+
+		                	        <?php if( !empty( $top_phone ) ){ ?>
+		                	            <span class="phone"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo esc_html( $top_phone ); ?></span>
+		                	        <?php } ?>
+
+		                	        <?php if( !empty( $top_email ) ){ ?>
+		                	            <span class="email"><i class="fa fa-envelope-o" aria-hidden="true"></i> <?php echo esc_html( $top_email ); ?></span>
+		                	        <?php } ?>
+		                	        
+		                	    </div>
+		                	    <?php
+		                	} elseif( 'top-menu' == $left_section && has_nav_menu( 'top' ) ){ ?>
+		                	    <div class="top-menu-warp">
+		                	        <?php
+		                	        wp_nav_menu(
+		                	            array(
+		                	            'theme_location' => 'top',
+		                	            'menu_id'        => 'top-menu',
+		                	            'depth'          => 1,                                   
+		                	            )
+		                	        ); ?>
+		                	    </div><!-- .menu-content -->
+		                	    <?php
+		                	} elseif( 'top-social' == $left_section && has_nav_menu( 'social' ) ){ ?>
+
+		                	    <div class="top-social-menu-container"> 
+
+		                	        <?php the_widget( 'Business_Kit_Social_Widget' ); ?>
+
+		                	    </div>
+		                	    <?php
+		                	} ?>
+		                </div><!-- .top-info-left -->
+
+		                <div class="top-info-right">
+
+		                	<?php 
+		                	if( 'contact' == $right_section && ( !empty( $top_address ) || !empty( $top_phone ) || !empty( $top_email ) ) ){ ?>
+
+		                	    <div class="top-contact-info">
+		                	        <?php if( !empty( $top_address ) ){ ?>
+		                	            <span class="address"><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo esc_html( $top_address ); ?></span>
+		                	        <?php } ?>
+
+		                	        <?php if( !empty( $top_phone ) ){ ?>
+		                	            <span class="phone"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo esc_html( $top_phone ); ?></span>
+		                	        <?php } ?>
+
+		                	        <?php if( !empty( $top_email ) ){ ?>
+		                	            <span class="email"><i class="fa fa-envelope-o" aria-hidden="true"></i> <?php echo esc_html( $top_email ); ?></span>
+		                	        <?php } ?>
+		                	        
+		                	    </div>
+		                	    <?php
+		                	} elseif( 'top-menu' == $right_section && has_nav_menu( 'top' ) ){ ?>
+		                	    <div class="top-menu-warp">
+		                	        <?php
+		                	        wp_nav_menu(
+		                	            array(
+		                	            'theme_location' => 'top',
+		                	            'menu_id'        => 'top-menu',
+		                	            'depth'          => 1,                                   
+		                	            )
+		                	        ); ?>
+		                	    </div><!-- .menu-content -->
+		                	    <?php
+		                	} elseif( 'top-social' == $right_section && has_nav_menu( 'social' ) ){ ?>
+
+		                	    <div class="top-social-menu-container"> 
+
+		                	        <?php the_widget( 'Business_Kit_Social_Widget' ); ?>
+
+		                	    </div>
+		                	    <?php
+		                	} ?>
+		                </div><!-- .top-info-right -->
+
+		           </div><!-- .top-header-content --> 
+
+		        </div> <!-- .container -->
+
+		    </div> <!-- .top-header -->
+
+	    <?php } ?>
+
+	    <div class="bottom-header">
+	        
+	        <div class="container">
+
+            	<div class="site-branding">
+            		
+            		<?php business_kit_the_custom_logo(); ?>
+
+                    <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+
+            		<?php
+            		$description = get_bloginfo( 'description', 'display' );
+
+                    if ( $description || is_customize_preview() ) : ?>
+
+                        <p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+
+                        <?php
+                    endif; ?>
+            	</div><!-- .site-branding -->
+
+	            <div class="main-navigation-wrapper">
+                    <div id="main-nav" class="clear-fix">
+                        <nav id="site-navigation" class="main-navigation" role="navigation">
+                            <div class="wrap-menu-content">
+                				<?php
+                				wp_nav_menu(
+                					array(
+                					'theme_location' => 'primary',
+                					'menu_id'        => 'primary-menu',
+                					'fallback_cb'    => 'business_kit_primary_navigation_fallback',
+                					)
+                				);
+                				?>
+                            </div><!-- .menu-content -->
+                        </nav><!-- #site-navigation -->
+                    </div> <!-- #main-nav -->
+
+	            </div> <!-- .main-navigation-wrapper -->
+
+	        </div> <!-- .container -->
+
+	    </div> <!-- .bottom-header -->
+
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+
+		<?php get_template_part( 'template-parts/slider' ); ?>
+
+		<?php get_template_part( 'template-parts/home-widgets' ); ?>
+
+		<?php get_template_part( 'template-parts/banner' ); ?>
 
 		<div class="container">
-
-		<div class="site-branding">
-
-			<?php if (get_theme_mod('logo', get_template_directory_uri().'/assets/img/logo.png') != null) { ?>
-			
-			<div id="logo">
-				<span class="helper"></span>
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<img src="<?php echo get_theme_mod('logo', get_template_directory_uri().'/assets/img/logo.png'); ?>" alt=""/>
-				</a>
-			</div><!-- #logo -->
-
-			<?php } else { ?>
-
-			<div class="site-title">
-				<h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
-			</div><!-- .site-title -->
-
-			<?php } ?>
-
-		</div><!-- .site-branding -->		
-
-		<nav id="primary-nav" class="primary-navigation">
-
-			<?php 
-				if ( has_nav_menu( 'primary' ) ) {
-					wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'menu_class' => 'sf-menu' ) );
-				} else {
-			?>
-
-				<ul id="primary-menu" class="sf-menu">
-					<li><a href="<?php echo home_url(); ?>/wp-admin/nav-menus.php"><?php echo __('Add menu for location: Primary Menu', 'revenue'); ?></a></li>
-				</ul><!-- .sf-menu -->
-
-			<?php } ?>
-
-		</nav><!-- #primary-nav -->
-
-		<div id="slick-mobile-menu"></div>
-
-		<?php if ( get_theme_mod('header-search-on', true) ) : ?>
-			
-			<span class="search-icon">
-				<span class="genericon genericon-search"></span>
-				<span class="genericon genericon-close"></span>			
-			</span>
-
-			<div class="header-search">
-				<form id="searchform" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<input type="search" name="s" class="search-input" placeholder="Search for..." autocomplete="off">
-					<button type="submit" class="search-submit"><?php echo __('Search', 'revenue'); ?></button>		
-				</form>
-			</div><!-- .header-search -->
-
-		<?php endif; ?>						
-
-		</div><!-- .container -->
-
-	</header><!-- #masthead -->	
-
-<div id="content" class="site-content container clear">
+			<div class="inner-wrapper">

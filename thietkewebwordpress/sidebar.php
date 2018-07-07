@@ -1,0 +1,1 @@
+<div class="sidebar-content">	<?php dynamic_sidebar('sidebar'); wp_reset_postdata();?></div>
