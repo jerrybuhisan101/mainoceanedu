@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "BẢNG KHẢO SÁT THÔNG TIN";
+    var sr = new StreamReader(Server.MapPath("/images/contact/bangthongtinkhaosat.txt"));
+    var reginfo = sr.ReadToEnd();
+    sr.Close();
+}
+
+<div class="container mt30">
+    <div class="row">
+        @Html.Action("LeftAbout")
+        <div class="col-sm-8">
+            <div class="box-module-center-reserve" style="margin-top: -2px">
+                <h1>BẢNG KHẢO SÁT THÔNG TIN</h1>
+            </div>
+            <div class="body-content">
+                @Html.Raw(reginfo)
+            </div>
+            @if (ViewBag.Result == 1)
+            {
+                <p class="alert alert-success mt30">Cảm ơn thông tin khảo sát của quý khách! Chúng tôi sẽ liên hệ với quý khách trong thời gian sớm nhất </p>
+            }
+            else
+            {
+              if (ViewBag.Result == 2)
+                {
+                    <p class="alert alert-danger mt30">Thông tin quý khách nhập không chính xác và phù hợp. Quý khách vui lòng thực hiện lại.</p>
+                }
+                <div class="alert alert-info text-justify mt30">
+                    <p>Quý vị đang quan tâm tới khóa học tiếng Anh và băn khoăn không biết bắt đầu như thế nào?</p>
+                    <p>
+                        Tiêu chí lựa chọn ra sao? Hãy cùng Ocean Edu thực hiện “Khảo sát nhu cầu học tiếng Anh” để có những tiêu chí lựa chọn tốt nhất và đặc biệt có cơ hội nhận được những suất học bổng có giá trị lớn cùng những phần quà hấp dẫn từ nhà tài trợ trường Lincoln School of Management Singapore.
+                    </p>
+                    <p>Quý vị vui lòng lựa chọn khóa học để khảo sát!</p>
+                    <div style="overflow: hidden" class="mt30">
+                        <span style="width: 50%; float: left"><a href="javascript:;" onclick="loadSurvey(1)">1. Khóa học dành cho trẻ em từ 4-16 tuổi</a></span>
+                        <span style="width: 50%; float: left"><a href="javascript:;" onclick="loadSurvey(2)">2. Khóa học dành cho người lớn</a></span>
+                    </div>
+                    <p class="mt30">
+                        100 Bộ quà tặng trị giá 1.300.000 VNĐ sẽ được trao cho 100 Quý vị có bảng trả lời khảo sát đầy đủ và được gửi về sớm nhất.
+                    </p>
+                </div>
+                <div id="survey-result"></div>
+            }
+            <div class="bg-bottom-box-center"></div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <script>
+        function loadSurvey(action) {
+            if (action == 1) {
+                $("#survey-result").load("/Home/SurveyChildren");
+            } else if(action == 2) {
+                $("#survey-result").load("/Home/SurveyStudent");
+            }
+        }
+    </script>
+}

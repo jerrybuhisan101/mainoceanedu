@@ -1,0 +1,147 @@
+﻿@model Ocean2014.ViewModel.RegUuDai
+@{
+    Layout = null;
+    var sr = new StreamReader(Server.MapPath("/images/contact/uudaiinfo.txt"));
+    var uudaiInfo = sr.ReadToEnd();
+    sr.Close();
+}
+<!DOCTYPE html>
+<html lang="vi-VN">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Đăng ký nhận ưu đãi</title>
+    @Styles.Render("~/Content/css2")
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700&subset=vietnamese,latin-ext' rel='stylesheet' type='text/css'>
+
+	<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MJXWPRQ');</script>
+<!-- End Google Tag Manager -->	
+
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1895514120716909');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1895514120716909&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+</head>
+
+<script>
+  fbq('track', 'CompleteRegistration');
+</script>
+
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJXWPRQ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div class="container mt30">
+        <div class="box-module-center-reserve" style="margin-top: -2px">
+            <h1>ĐĂNG KÝ NHẬN ƯU ĐÃI HỌC TIẾNG ANH TẠI OCEAN EDU</h1>
+        </div>
+        <div class="body-content">
+            @Html.Raw(uudaiInfo)
+        </div>
+        @if (ViewBag.Result == 1)
+        {
+            <p class="alert alert-success small text-center mt15">@Resource.GetUuDaiSuccess</p>
+        }
+        else
+        {
+            <p class="alert alert-info small text-center mt30">@Resource.NoticeContact</p>
+            <form action="@Url.Action("UuDaiFrame")" method="POST" class="form-horizontal mt30 mb50">
+                @Html.ValidationSummary(true)
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(a => a.FullName, new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(a => a.FullName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.FullName)
+                    </div>
+                </div>
+                @*<div class="form-group">
+                    @Html.LabelFor(a => a.Birthday, new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(a => a.Birthday, new { @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(a => a.Birthday)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(a => a.ParentName, new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(a => a.ParentName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.ParentName)
+                    </div>
+                </div>*@
+                <div class="form-group">
+                    @Html.LabelFor(a => a.Mobile, new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(a => a.Mobile, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.Mobile)
+                    </div>
+                </div>
+                @*<div class="form-group">
+                    @Html.LabelFor(a => a.Address, new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(a => a.Address, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.Address)
+                    </div>
+                </div>*@
+                <div class="form-group">
+                    @Html.LabelFor(a => a.Email, new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(a => a.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.Email)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(a => a.CourseId, new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.DropDownListFor(a => a.CourseId, Model.CourseList, Resource.RequiredCourse, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.CourseId)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(a => a.OfficeId, new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.DropDownListFor(a => a.OfficeId, Model.OfficeList, Resource.RequiredOffice, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.OfficeId)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-9 col-xs-offset-3">
+                        <button type="submit" class="btn btn-ocean"><i class="fa fa-check"></i> @Resource.Register</button>
+<script type="text/javascript">
+$( '#$submitButton' ).click(function() {
+fbq('track', 'CompleteRegistration');
+</script>
+                    </div>
+                </div>
+            </form>
+        }
+        <div class="bg-bottom-box-center"></div>
+    </div>
+    @Scripts.Render("~/bundles/jquery", "~/bundles/jqueryval", "~/bundles/bootstrap")
+    <script src="~/Scripts/jquery.inputmask.bundle.min.js"></script>
+    <script>
+        $(".datepicker").inputmask("date", { "placeholder": "dd/mm/yyyy" })
+    </script>
+</body>
+</html>

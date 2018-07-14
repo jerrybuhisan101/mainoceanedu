@@ -1,0 +1,307 @@
+﻿@model Ocean2014.ViewModel.HomeViewModel
+@{
+    ViewBag.Title = "Học tiếng Anh";
+    ViewBag.Description = "TRUNG TÂM ANH NGỮ VIỆT NAM , HỌC TIẾNG ANH VIỆT NAM , TRUNG TÂM ANH NGỮ CHO TRẺ EM , GIÁO DỤC CÔNG TY CỔ PHẦN ĐẠI DƯƠNG , VIỆT NAM T10 L2 OCEAN CITY TIMES EDU, 458 MINH KHAI, HÀ NỘI , ĐIỆN THOẠI : 1111 043 205 1111 -043 206 .";
+    ViewBag.Keywords = "trung tâm tiếng Anh , Trung tâm Anh ngữ Việt Nam , Học tiếng Anh, Trung tâm tiếng anh , học tiếng Anh, học tiếng anh , ngôn ngữ tiếng Anh, Dương Edu , Hà Nội bằng tiếng Anh , trung tâm ngoại ngữ Hà Nội";
+    ViewBag.Canonical = Request.Url;
+    Layout = "~/Views/Shared/_LayoutDemo.cshtml";
+    var firstbanner = Model.Banners.FirstOrDefault(a => a.Advertise_Potision == 1);
+    if (firstbanner != null)
+    {
+        ViewBag.ImageThumb = "http://ocean.edu.vn" + Path.Combine("/images/banners/", firstbanner.Advertise_Image);
+    }
+    var bannerPopup = Model.Banners.FirstOrDefault(a => a.Advertise_Potision == 5);
+}
+
+<div class="container mt20">
+    <div id="camera-slideshow" class="pattern_1">
+        @foreach (var banner in Model.Banners.Where(a => a.Advertise_Potision == 1))
+        {
+            <div data-src="@Path.Combine("/images/banners/",banner.Advertise_Image)" data-thumb="" data-link="@banner.Advertise_Link" data-target="_self">
+            </div>
+        }
+    </div>
+</div>
+<div class="container hidden-xs">
+    <div id="sticky">
+        <a href="@Url.Action("RegisterOnline", new {Culture})"><img src="~/Content/images/skin/reg-online-icon.png" alt="Trung tâm Anh Enroll trực tuyến" /></a>
+    </div>
+</div>
+<div class="container triggerAnimation animated" data-animate="fadeInLeft">
+    <div class="module-name text-center" style="border: 0;">
+        <h2>@Resource.CLT</h2>
+    </div>
+    <div class="box-intro">
+        <div class="row padding-box">
+            <div class="col-md-3 col-xs-6 text-center">
+                <div class="hvr-bob">
+                    <img src="~/Content/images/skin/icon-1.jpg" class="img-responsive" alt="ngôn ngữ tiếng Anh Ocean Edu icon" />
+                    <div class="clearfix">
+                        <div class="bg-1"></div>
+                        <div class="intro-caption">
+                            @Resource.TuongTac
+                        </div>
+                        <div class="bg-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-6 text-center">
+                <div class="hvr-bob">
+                    <img src="~/Content/images/skin/icon-2.jpg" class="img-responsive" alt="học tiếng anh biểu tượng" />
+                    <div class="clearfix">
+                        <div class="bg-1"></div>
+                        <div class="intro-caption">
+                            @Resource.KhongGian
+                        </div>
+                        <div class="bg-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-6 text-center">
+                <div class="hvr-bob">
+                    <img src="~/Content/images/skin/icon-3.jpg" class="img-responsive" alt="người biểu tượng ngôn ngữ tiếng anh" />
+                    <div class="clearfix">
+                        <div class="bg-1"></div>
+                        <div class="intro-caption">
+                            @Resource.GiaoTiep
+                        </div>
+                        <div class="bg-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-6 text-center">
+                <div class="hvr-bob">
+                    <img src="~/Content/images/skin/icon-4.jpg" class="img-responsive" alt="trung tâm ngoại ngữ icon" />
+                    <div class="clearfix">
+                        <div class="bg-1"></div>
+                        <div class="intro-caption">
+                            @Resource.ThucTe
+                        </div>
+                        <div class="bg-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container triggerAnimation animated" data-animate="fadeInUp">
+    <div class="module-name text-center" style="border-top: 0">
+        <h2>@Resource.ListCourseHome</h2>
+    </div>
+    <div class="row" id="list-course">
+        @{
+            var j = 1;
+        }
+        @foreach (var groupCourse in Model.GroupCourses)
+        {
+            string hoverclass;
+            switch (j)
+            {
+                case 2:
+                    hoverclass = "hover-orange";
+                    break;
+                case 3:
+                    hoverclass = "hover-green";
+                    break;
+                case 4:
+                    hoverclass = "hover-red";
+                    break;
+                default:
+                    hoverclass = "hover-pink";
+                    break;
+            }
+            <div class="col-sm-6 col-xs-12 hvr-float-shadow course-item">
+                <div class="background-course @hoverclass">
+                    <div class="bg-trans-top">
+                        <div class="row">
+                            <div class="col-xs-7" style="z-index: 2">
+                                <div class="bg-number font-dax-bold">
+                                    @string.Format("0{0}", j)
+                                </div>
+                                <div class="text-course">
+                                    <a href="@Url.Action("GroupCourse", new {gId = groupCourse.Id, name = Html.ConvertToUnSign(groupCourse.Name), Culture})">
+                                        @(Culture == "vi-VN" ? groupCourse.Name : groupCourse.Name_En)
+                                    </a>
+                                </div>
+                                <div class="button-course">
+                                    <a href="@Url.Action("GroupCourse", new {gId = groupCourse.Id, name = Html.ConvertToUnSign(groupCourse.Name), Culture})" class="btn btn-sm btn-danger"><i class="fa fa-caret-right"></i> @Resource.SeeDetail</a>
+                                </div>
+                            </div>
+                            <div class="col-xs-5">
+                                <div class="bg-cheo"></div>
+                                <div class="img-course">
+                                    @if (groupCourse.Image != null)
+                                    {
+                                        <img src="@Path.Combine("/images/course/", groupCourse.Image)" alt="sinh viên học tiếng Anh Ocean Edu" class="img-responsive hvr-wobble-horizontal" />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            j++;
+        }
+    </div>
+    <div class="text-center">
+        <a href="javascript:;" onclick="showMoreCourse()" class="btn btn-sm btn-ocean font-dax-light hvr-shutter-out-vertical">Click để xem thêm khóa học <i class="fa fa-caret-down"></i></a>
+    </div>
+</div>
+<div class="container mt30 triggerAnimation animated" data-animate="fadeInUp">
+    <div class="module-name text-center">
+        <h2>@Resource.NewEvent</h2>
+    </div>
+    <div class="news-line-1"></div>
+    <div class="box-news-home">
+        <div class="row padding-box">
+            <div class="col-md-3 col-xs-6 text-center">
+                <div class="hvr-bob">
+                    <div style="padding: 30px; padding-bottom: 0;">
+                        <img src="~/Content/images/v2/new-1.png" class="img-responsive" alt="Bản tin mới" />
+                    </div>
+                    <div class="clearfix">
+                        <div class="bg-1"></div>
+                        <div class="intro-caption">
+                            Tổng hợp bản tin mới
+                        </div>
+                        <div class="bg-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-6 text-center">
+                <div class="hvr-bob">
+                    <div style="padding: 30px; padding-bottom: 0;">
+                        <img src="~/Content/images/v2/new-2.png" class="img-responsive" alt="Trải nghiệm, vươn xa" />
+                    </div>
+                    <div class="clearfix">
+                        <div class="bg-1"></div>
+                        <div class="intro-caption">
+                            Trải nghiệm, vươn xa
+                        </div>
+                        <div class="bg-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-6 text-center">
+                <div class="hvr-bob">
+                    <div style="padding: 30px; padding-bottom: 0;">
+                        <img src="~/Content/images/v2/new-3.png" class="img-responsive" alt="Tương tác hiệu quả" />
+                    </div>
+                    <div class="clearfix">
+                        <div class="bg-1"></div>
+                        <div class="intro-caption">
+                            Tương tác hiệu quả
+                        </div>
+                        <div class="bg-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-6 text-center">
+                <div class="hvr-bob">
+                    <div style="padding: 30px; padding-bottom: 0;">
+                        <img src="~/Content/images/v2/new-4.png" class="img-responsive" alt="Hình ảnh thực tế" />
+                    </div>
+                    <div class="clearfix">
+                        <div class="bg-1"></div>
+                        <div class="intro-caption">
+                            Hình ảnh thực tế
+                        </div>
+                        <div class="bg-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="news-line-1"></div>
+</div>
+<div class="container mt30 triggerAnimation animated" data-animate="bounceInRight">
+    <div class="module-name text-center">
+        <h2>@Resource.StudentComments</h2>
+    </div>
+    <div class="row" id="list-comment">
+        @{
+            var i = 1;
+        }
+        @foreach (var news in Model.News.Take(2))
+        {
+            var classCss = "background-course";
+            if (i % 2 == 0)
+            {
+                classCss = "background-course-reverse";
+            }
+            <div class="col-sm-6 col-xs-12 comment-item">
+                <div class="@classCss">
+                    <div class="box-img-cm">
+                        <div class="icon-star"></div>
+                        @if (news.Image != null)
+                        {
+                            <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), culture = UICulture})">
+                                <img src="@news.Image?w=202&h=144&mode=crop" class="hvr-rotate" alt="@news.Subject" />
+                            </a>
+                        }
+                    </div>
+                    <div class="bg-text-cm hvr-float-shadow">
+                        <p>
+                            <a class="font-roboto title-cm" href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject)})">@news.Subject</a>
+                        </p>
+                        <p>@Html.CutString(news.Description, 200)</p>
+                    </div>
+                </div>
+            </div>
+            i++;
+        }
+    </div>
+    <div class="news-line-1"></div>
+    <div class="text-center border-see-more">
+        <a href="javascript:;" onclick="showMoreComent()" class="btn btn-sm btn-ocean font-dax-light hvr-shutter-out-vertical">Click để xem thêm<i class="fa fa-caret-down"></i></a>
+    </div>
+</div>
+@Html.Action("OfficeListDemo")
+@if (bannerPopup != null)
+{
+    <div style="display: none">
+        <div id="banner-popup">
+            @Html.ShowBanner(Path.Combine("/images/banners/", bannerPopup.Advertise_Image), bannerPopup.Advertise_Link, bannerPopup.Advertise_Width, bannerPopup.Advertise_Height, bannerPopup.Advertise_Target, bannerPopup.Name)
+        </div>
+    </div>
+}
+@section scripts
+{
+    @*<script src="~/Content/images/helpers/jquery.fancybox-media.js"></script>*@
+    <script src="~/Scripts/camera.min.js"></script>
+    <script>
+        $("#camera-slideshow")
+            .camera({
+                height: '41%',
+                time: 3000
+            });
+        $("#sticky")
+            .sticky({
+                topSpacing: 50
+            });
+        $(function () {
+            $("#nav-top-demo li")
+                .hover(function () {
+                    $(this).find("ul:first").stop(true).slideDown();
+                },
+                    function () {
+                        $(this).find("ul").hide();
+                    });
+        });
+        //$(".fancybox-media").fancybox({
+        //    helpers: { media: {} }
+        //});
+        @*@if (bannerPopup != null)
+        {
+            <text>
+            $.fancybox.helpers.overlay.open({ parent: $('body') });
+            $.fancybox.open({ href: "#banner-popup" });
+            </text>
+        }
+        getImg(183);
+        getImg(208);
+        getImg(216);*@
+    </script>
+}

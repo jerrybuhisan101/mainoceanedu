@@ -1,0 +1,79 @@
+﻿@model Ocean2014.ViewModel.HeaderViewModel
+<footer class="background-course" style="overflow: inherit; height: auto; margin-top: 30px; border-top: 8px #00aeef solid;">
+    <img src="~/Content/images/v2/arrow-2.png" class="img-responsive center-block" />
+    <div class="bg-footer-right">
+        <div class="container">
+            <div class="row mt30">
+                <div class="col-md-4 col-sm-12 box-bottom-logo">
+                    <div class="box-img-bottom-logo">
+                        <img src="~/Content/images/v2/logo-bot.png" alt="Ocean Edu" class="img-responsive img-rounded center-block" />
+                    </div>
+                    <div class="company-bottom">@Resource.CompanyName</div>
+                    <div class="brand-bottom">Ocean Edu Vietnam</div>
+                    <address class="add-bottom">
+                        @*<strong>Ocean Edu Times City Hà Nội</strong>*@<br />
+                        Tòa nhà Ocean Edu, 204 Nguyễn Lương Bằng, Đống Đa, Hà Nội<br />
+                        ĐT: <a href="tel:19006494">1900 6494</a> - <a href="tel:02473000333">02473 000 333</a>
+                    </address>
+                </div>
+                <div class="col-md-8 hidden-xs">
+                    <hr style="margin-top: 0; border-color: #fff" />
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6">
+                            <b class="font-roboto" style="color: #fff;">CHƯƠNG TRÌNH HỌC</b>
+                            <ul class="list-bottom">
+                                @foreach (var groupCourse in Model.GroupCourses)
+                                {
+                                    <li><a href="@Url.Action("GroupCourse", new {gId = groupCourse.Id, name = Html.ConvertToUnSign(groupCourse.Name), Culture})">@groupCourse.Name</a></li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <b class="font-roboto" style="color: #fff;">THÔNG TIN HỮU ÍCH</b>
+                            <ul class="list-bottom">
+                                <li><a href="/vi-VN/hinh-anh">Thư viện hình ảnh</a></li>
+                                <li><a href="/vi-VN/tin-tuc/hoi-dap-212">Câu hỏi thường gặp</a></li>
+                                <li><a href="//ocean.edu.vn/vi-VN/tin-tuc/ban-tin-ocean-edu-183">Bản tin Ocean Edu</a></li>
+                                <li><a href="@Url.Action("ListVideo")">Video</a></li>
+                                <li><a href="http://duhoc.ocean.edu.vn">Du học</a></li>
+                                <li><a href="/su-kien">Sự kiện</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <b class="font-roboto" style="color: #fff;">GIỚI THIỆU</b>
+                            <ul class="list-bottom">
+                                @foreach (var about in Model.Abouts)
+                                {
+                                    <li><a href="@Url.Action("About", new {aboutId = about.Id, name = Html.ConvertToUnSign(about.Subject), Culture})">@about.Subject</a></li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <b class="font-roboto" style="color: #fff;">OCEAN EDU TRÊN FACEBOOK</b>
+                            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FOceanEduVietNam%2F&tabs&width=165&height=170&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1514932012164173" width="165" height="170" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-footer">
+                <div class="text-center" style="position: relative;">
+                    <a href="http://www.brightworld.co.uk/" target="blank"><img src="~/Content/images/skin/certifate.jpg" alt="" /></a>
+                    <div id="bot-social">
+                        <div class="clearfix">
+                            <a href="https://www.facebook.com/OceanEduVietNam/" target="blank"><img src="~/Content/images/skin/social-icons_01.jpg" class="pull-left" alt="Facebook" /></a>
+                            <a href="https://www.linkedin.com/company/ocean-edu-vi%E1%BB%87t-nam?trk=biz-companies-cym" target="blank"><img src="~/Content/images/skin/social-icons_02.jpg" class="pull-left" alt="Linkedin" /></a>
+                            <a href="https://www.youtube.com/channel/UCutkhO_UB3kTuPtJCiaQY-g" target="blank"><img src="~/Content/images/skin/social-icons_03.jpg" class="pull-left" alt="Youtube Channel" /></a>
+                            <a href=""><img src="~/Content/images/skin/social-icons_04.jpg" class="pull-left" alt="Rss" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="font-dax" style="color: #7ACEDA">
+                Copyright © 2007 Ocean Edu Vietnam | Tuyên bố từ chối | Bảo mật | Khả năng truy cập | Phản hồi cho website | Thông cáo báo chí | Sitemap
+            </p>
+        </div>
+    </div>
+    <!--Float Banner goc phai-->
+    <!--Float Banner goc phai-->
+</footer>
+<a href="tel:19006494" id="callnowbutton">&nbsp;</a>

@@ -1,0 +1,183 @@
+﻿@model Ocean2014.ViewModel.NewsDetailViewModel
+@{
+    ViewBag.Title = Model.News.Subject;
+    ViewBag.Description = Model.News.Description ?? Model.News.Subject;
+    ViewBag.Keywords = Model.News.Keyword ?? Model.News.Subject;
+    ViewBag.ImageThumb = "http://ocean.edu.vn" + Model.News.Image;
+}
+<div class="container">
+    <div class="row">
+        @if (Model.News.TypeShow == 1)
+        {
+            <div class="col-md-9 mt30">
+                <h1 id="default-title" class="font-colossalis">@Model.News.Subject</h1>
+                <p class="small">
+                    <i class="fa fa-calendar"></i> @Model.News.CreateDate.ToString("dd/MM/yyyy") - <i class="fa fa-eye"></i> @Model.News.View @Resource.View
+                </p>
+                <div class="meta-info-top">
+                    <div class="addthis_native_toolbox"></div>
+                    <fieldset class="rating">
+                        <span>@Model.AggRate stars / @Model.CountRate rates</span>
+                        <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+                        @*<input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>*@
+                        <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                        @*<input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>*@
+                        <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
+                        @*<input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>*@
+                        <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                        @*<input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>*@
+                        <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                        @*<input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>*@
+                    </fieldset>
+                </div>
+                <hr />
+                <h2 class="sapo-detail">@Model.News.Description</h2>
+                <div class="box-article">
+                    @Html.Raw(Model.News.Body)
+                </div>
+                <div class="mt30 mb30">
+                    <div class="addthis_native_toolbox"></div>
+                </div>
+                <div class="fb-comments" data-href="@Request.Url" data-numposts="5" data-width="100%"></div>
+                @if (Model.RelateNews.Any())
+                {
+                    <div class="module-name">
+                        <h2>@Resource.ReleatedArticle</h2>
+                    </div>
+                    foreach (var news in Model.RelateNews)
+                    {
+                        <div class="box-list-course">
+                            <div class="row">
+                                <div class="col-sm-4 col-xs-6">
+                                    <div class="box-img-hover">
+                                        <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})">
+                                            <img src="@news.Image?w=262&h=170&mode=crop" alt="@news.Subject" class="img-responsive" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8 col-xs-6">
+                                    <div class="icon-top-left"></div>
+                                    <h2>
+                                        <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})" class="news-title">@news.Subject</a>
+                                    </h2>
+                                    <p class="hidden-xs">@news.Description</p>
+                                    <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})" class="label label-success pull-right mt15">Xem tiếp</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            <div class="col-md-3 mt30">
+                @Html.Action("RegisterForm")
+                @*@if (Model.RelateNews.Any())
+                    {
+                        <div class="box-related-bg">
+                            @Resource.ReleatedArticle
+                        </div>
+                        foreach (var news in Model.RelateNews)
+                        {
+                            <div class="box-list-course">
+                                <div class="row">
+                                    @if (news.Image != null)
+                                    {
+                                        <div class="col-sm-12">
+                                            <div class="box-img-hover">
+                                                <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})">
+                                                    <img src="@news.Image?w=360&h=200&mode=crop" alt="@news.Subject" class="img-responsive"/>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    }
+                                    <div class="col-sm-12">
+                                        <div class="icon-top-left"></div>
+                                        <h3><a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})" class="news-title">@news.Subject</a></h3>
+                                        <p>@news.Description</p>
+                                        <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})" class="label label-success pull-right">@Resource.SeeDetail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }*@
+            </div>
+        }
+        else
+        {
+            <div class="col-md-12 mt30">
+                <h1 id="default-title" class="font-colossalis">@Model.News.Subject</h1>
+                <p class="small">
+                    <i class="fa fa-calendar"></i> @Model.News.CreateDate.ToString("dd/MM/yyyy") - <i class="fa fa-eye"></i> @Model.News.View @Resource.View
+                </p>
+                <div class="meta-info-top">
+                    <div class="addthis_native_toolbox"></div>
+                    <fieldset class="rating">
+                        <span>@Model.AggRate stars / @Model.CountRate rates</span>
+                        <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+                        @*<input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>*@
+                        <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                        @*<input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>*@
+                        <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
+                        @*<input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>*@
+                        <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                        @*<input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>*@
+                        <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                        @*<input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>*@
+                    </fieldset>
+                </div>
+                <hr />
+                <h2 class="sapo-detail">@Model.News.Description</h2>
+                <div class="box-article">
+                    @Html.Raw(Model.News.Body)
+                </div>
+                <div class="mt30 mb30">
+                    <div class="addthis_native_toolbox"></div>
+                </div>
+                <div class="fb-comments" data-href="@Request.Url" data-numposts="5" data-width="100%"></div>
+                @if (Model.RelateNews.Any())
+                {
+                    <div class="module-name">
+                        <h2>@Resource.ReleatedArticle</h2>
+                    </div>
+                    foreach (var news in Model.RelateNews)
+                    {
+                        <div class="box-list-course">
+                            <div class="row">
+                                <div class="col-sm-4 col-xs-6">
+                                    <div class="box-img-hover">
+                                        <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})">
+                                            <img src="@news.Image?w=262&h=170&mode=crop" alt="@news.Subject" class="img-responsive" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8 col-xs-6">
+                                    <div class="icon-top-left"></div>
+                                    <h2>
+                                        <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})" class="news-title">@news.Subject</a>
+                                    </h2>
+                                    <p class="hidden-xs">@news.Description</p>
+                                    <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})" class="label label-success pull-right mt15">Xem tiếp</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        }
+    </div>
+</div>
+@section scripts
+{
+    <script>
+        $(".rating input").on("click", function () {
+                var rate = $(this).val();
+                $.post("/Home/Rate",{ rate, newsId: @Model.News.Id },function(data) {
+                        if (data.result == '0') {
+                            alert("Quá trình thực hiện xảy ra lỗi. Bạn vui lòng thử lại");
+                        } else {
+                            $(".rating span").text(data.aggRate + " stars / " + data.countRate + ' rates');
+                            $('.rating input').attr("disabled", "disabled");
+                        }
+                    });
+            });
+    </script>
+}

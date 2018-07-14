@@ -1,0 +1,54 @@
+﻿@using PagedList.Mvc
+@model Ocean2014.ViewModel.ListVideoViewModel
+@{
+    ViewBag.Title = "Video - Clip";
+    ViewBag.Description = "Trung tâm tiếng Anh , video Ocean Edu để học tiếng Anh , cuộc thi tiếng Anh tại Ocean Edu , tin tức sự kiện mới nhất về hệ thống tiếng Anh Ocean Edu Việt Nam";
+    ViewBag.Keywords = "Video, Clip, Ocean Edu, Trung tâm tiếng Anh  Video, đoạn ghi hình";
+}
+
+<div class="container mt30">
+    <h1 id="default-title">Ocean Edu Video - Clip</h1>
+    @if (Model.VideoCategories.Any())
+    {
+        <ul class="list-city">
+            <li @if(!Model.CategoryId.HasValue){@Html.Raw("class='active'")}><a href="@Url.Action("ListVideo")">Tất cả</a></li>
+            @foreach (var category in Model.VideoCategories)
+            {
+                <li @if(Model.CategoryId == category.Id){@Html.Raw("class='active'")}><a href="@Url.Action("ListVideo", new {catId = category.Id})">@category.Name</a></li>
+            }
+        </ul>
+    }
+
+    <div class="row" id="video-list">
+        @foreach (var video in Model.VideoDtos)
+        {
+            var st = video.YoutubeLink.IndexOf("youtu.be/", StringComparison.Ordinal) + 9;
+            var url = video.YoutubeLink.Substring(st);
+            <div class="col-sm-4">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe src="//www.youtube.com/embed/@url?rel=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <p style="text-align: center">
+                    <a href="@video.YoutubeLink" class="fancybox-media" rel="video">
+                        @video.Subject
+                    </a>
+                </p>
+            </div>
+        }
+    </div>
+    @if (Model.VideoDtos.PageCount > 1)
+    {
+        <div class="text-center">@Html.PagedListPager(Model.VideoDtos, page => Url.Action("ListVideo", new {page, catId = Model.CategoryId}))</div>
+    }
+</div>
+@section scripts
+{
+    <script src="~/Content/images/helpers/jquery.fancybox-media.js"></script>
+    <script>
+        $(".fancybox-media").fancybox({
+            helpers: {
+                media: {}
+            }
+        })
+    </script>
+}

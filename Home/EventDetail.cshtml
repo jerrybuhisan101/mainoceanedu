@@ -1,0 +1,62 @@
+﻿@model Ocean2014.ViewModel.EventDetailViewModel
+@{
+    ViewBag.Title = Model.Event.Title ?? Model.Event.Name;
+    ViewBag.Description = Model.Event.DescriptionTag ?? Model.Event.Description;
+    ViewBag.Keywords = Model.Event.KeywordTag ?? Model.Event.Name;
+}
+
+<div class="container">
+    <div class="module-name text-center">
+        <h1>@Model.Event.Name</h1>
+    </div>
+    @if (Model.Event.Description != null)
+    {
+        <h2 class="event-sapo">@Model.Event.Description</h2>
+    }
+    <div class="box-time">
+        <div class="begin">
+            <i class="fa fa-calendar"></i> Bắt đầu: @Html.DisplayFor(a => a.Event.BeginTime)
+        </div>
+        <div class="finish">
+            <i class="fa fa-calendar-check-o"></i> Kết thúc: @Html.DisplayFor(a => a.Event.EndTime)
+        </div>
+    </div>
+    <div class="body-content">
+        @Html.Raw(Model.Event.Body)
+    </div>
+    @if (Model.Event.RegisterUrl != null)
+    {
+        <hr />
+        <div class="text-center">
+            <a href="@Model.Event.RegisterUrl" target="_blank" class="btn btn-ocean btn-lg hvr-bounce-to-right"><i class="fa fa-user-plus"></i> ĐĂNG KÝ SỰ KIỆN</a>
+        </div>
+    }
+
+    @if (Model.Events.Any())
+    {
+        <div class="box-module-center-reserve" style="margin-top: 30px">
+            <h1>Sự kiện khác</h1>
+        </div>
+        <div class="row">
+            @foreach (var events in Model.Events)
+            {
+                <div class="col-md-4 col-sm-6 col-xs-12 item-event">
+                    @if (events.Image != null)
+                    {
+                        <a href="@Url.Action("EventDetail", new{eventId = events.Id, name =Html.ConvertToUnSign(events.Name)})" class="img-thumb hvr-box-shadow-outset">
+                            <img src="@events.Image?w=360&h=250&mode=crop" class="img-responsive center-block" alt="@events.Name" />
+                        </a>
+                    }
+                    <h2><a href="@Url.Action("EventDetail", new{eventId = events.Id, name =Html.ConvertToUnSign(events.Name)})">@events.Name</a></h2>
+                    <p>
+                        <i class="fa fa-location-arrow"></i> @events.Address
+                    </p>
+                    <p>
+                        <i class="fa fa-calendar"></i> @Html.DisplayFor(a => events.BeginTime) - <i class="fa fa-calendar-check-o"></i> @Html.DisplayFor(a => events.EndTime)
+                    </p>
+                    <a href="@Url.Action("EventDetail", new{eventId = events.Id, name =Html.ConvertToUnSign(events.Name)})" class="btn btn-ocean btn-block hvr-bounce-to-right"><i class="fa fa-angle-right"></i> Chi tiết</a>
+                </div>
+            }
+        </div>
+    }
+</div>

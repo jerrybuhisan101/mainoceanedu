@@ -1,0 +1,68 @@
+﻿@model Ocean2014.ViewModel.RegCourseIframe
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="vi-VN">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>KIỂM TRA TRÌNH ĐỘ ĐẦU VÀO</title>
+    @Styles.Render("~/Content/css2")
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700&subset=vietnamese,latin-ext' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div class="container mt30">
+        <div class="box-module-center-reserve" style="margin-top: -2px">
+            <h1>KIỂM TRA TRÌNH ĐỘ ĐẦU VÀO</h1>
+        </div>
+        @if (ViewBag.Result == 1)
+        {
+            <p class="alert alert-success small text-center mt15">ĐĂNG KÝ THÀNH CÔNG.</p>
+        }
+        else
+        {
+            <p class="alert alert-info small text-center mt30">Vui lòng nhập thông tin chính xác</p>
+            <form action="@Url.Action("RegisterToeic")" method="POST" class="form-horizontal mt30 mb50">
+                @Html.ValidationSummary(true)
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(a => a.CourseId)
+                <div class="form-group">
+                    @Html.LabelFor(a => a.FullName, new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(a => a.FullName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.FullName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(a => a.Mobile, new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(a => a.Mobile, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.Mobile)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(a => a.Email, new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(a => a.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.Email)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(a => a.OfficeId, new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.DropDownListFor(a => a.OfficeId, Model.OfficeList, "Hãy chọn chi nhánh gần nhất", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.OfficeId)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-9 col-xs-offset-3">
+                        <button type="submit" class="btn btn-ocean"><i class="fa fa-check"></i> @Resource.Register</button>
+                    </div>
+                </div>
+            </form>
+        }
+        <div class="bg-bottom-box-center"></div>
+    </div>
+    @Scripts.Render("~/bundles/jquery", "~/bundles/jqueryval", "~/bundles/bootstrap")
+</body>
+</html>

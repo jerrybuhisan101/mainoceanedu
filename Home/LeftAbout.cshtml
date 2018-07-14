@@ -1,0 +1,57 @@
+﻿@model Ocean2014.ViewModel.LeftAboutViewModel
+<div class="col-sm-4 col-sm-pull-8">
+    <div class="box-left-dngv">
+        <div class="bg-module-left">
+            Giới thiệu OCEAN EDU
+        </div>
+        <ul class="left-menu-list" style="margin-top: 55px;">
+            @foreach (var about in Model.Abouts.Take(2))
+            {
+                <li><a href="@Url.Action("About", new {aboutId = about.Id, name =Html.ConvertToUnSign(about.Subject), Culture})">@about.Subject</a></li>
+            }
+            <li><a href="@Url.Action("ListTeacher", new {Culture})">@Resource.Teachers</a></li>
+            @foreach (var about in Model.Abouts.Skip(2))
+            {
+                <li><a href="@Url.Action("About", new {aboutId = about.Id, name =Html.ConvertToUnSign(about.Subject), Culture})">@about.Subject</a></li>
+            }
+            @*<li><a href="@Url.Action("ListFacility", new {Culture})">@Resource.Classrooms</a></li>*@
+        </ul>
+        <div class="bg-module-left-sub">
+            <div class="module-name-left">@Resource.ListCourse</div>
+        </div>
+        <div class="bg-box-left-2">
+            <ul>
+                @foreach (var groupCourse in Model.GroupCourses)
+                {
+                    <li><a href="@Url.Action("GroupCourse", new {gId = groupCourse.Id, name = Html.ConvertToUnSign(groupCourse.Name), Culture})">@groupCourse.Name</a></li>
+                }
+            </ul>
+        </div>
+        <div class="bg-bottom-box-2"></div>
+        <div class="bg-module-left-sub">
+            <div class="module-name-left">Bản tin Ocean</div>
+        </div>
+        <div class="bg-box-left-2">
+            <ul>
+                @foreach (var news in Model.Newses)
+                {
+                    <li><a href="@Url.Action("News", new {newsId = news.Id, name =Html.ConvertToUnSign(news.Subject), Culture})" title="@news.Subject">@Html.CutString(news.Subject, 60)</a></li>
+                }
+            </ul>
+        </div>
+        <div class="bg-bottom-box-2"></div>
+        <div class="bg-module-left-sub">
+            <div class="module-name-left">Tương tác học viên</div>
+        </div>
+        <div class="bg-box-left-2">
+            <ul>
+                @foreach (var news in Model.TuongTacHocVien)
+                {
+                    <li><a href="@Url.Action("News", new {newsId = news.Id, name =Html.ConvertToUnSign(news.Subject), Culture})" title="@news.Subject">@Html.CutString(news.Subject, 60)</a></li>
+                }
+            </ul>
+        </div>
+        <div class="bg-bottom-box-2"></div>
+    </div>
+</div>
+

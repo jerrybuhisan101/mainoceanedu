@@ -1,0 +1,92 @@
+﻿@model Ocean2014.ViewModel.TeacherDetailViewModel
+@{
+    ViewBag.Title = Model.TeacherDto.Name;
+    ViewBag.Description = string.IsNullOrEmpty(Html.RemoveHtml(Model.TeacherDto.Body)) ? "Đội ngũ 100% giáo viên nước ngoài giàu kinh nghiệm giảng dạy tiếng Anh với sự tận tâm nhiệt huyết và năng động" : Html.CutString(Html.RemoveHtml(Model.TeacherDto.Body), 150);
+    ViewBag.Keywords = Model.TeacherDto.Name;
+    ViewBag.ImageThumb = "http://ocean.edu.vn" + Path.Combine("/images/teacher/", Model.TeacherDto.Image);
+}
+
+<div class="container mt30">
+    <div class="row">
+        <div class="col-sm-8 col-sm-push-4">
+            <div class="box-module-center-reserve" style="margin-top: -2px">
+                <h1>@Resource.SloganTeacher</h1>
+            </div>
+            <div class="box-content-gv">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="box-avartar-teacher">
+                            <div class="box-img-teaher-content">
+                                <img src="@Path.Combine("/images/teacher", Model.TeacherDto.Image)" alt="@Model.TeacherDto.Name" class="img-responsive" />
+                            </div>
+                            <div class="name-teacher teacher-name-content">
+                                <i class="icon-right-top"></i>
+                                @Model.TeacherDto.Name<br />
+                                @Model.TeacherDto.Job
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="box-content-border-top">
+                            <div class="box-content-detail-gv">
+                                <div class="scrollbar-inner">
+                                    @Html.Raw(Model.TeacherDto.Body)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-bottom-box-center"></div>
+            <div class="box-related-bg">
+                @Resource.MoreTeachers
+            </div>
+            <div class="row mt30">
+                @foreach (var teacherDto in Model.TeacherDtos.Take(3))
+                {
+                    <div class="col-sm-4">
+                        <div class="box-img-teacher">
+                            <a href="@Url.Action("Teacher", new {teacherId = teacherDto.Id, name =Html.ConvertToUnSign(teacherDto.Name)})">
+                                <img src="@Path.Combine("/images/teacher", teacherDto.Image)" alt="@teacherDto.Name" class="img-responsive" />
+                            </a>
+                        </div>
+                        <div class="box-name-teacher">
+                            <div class="name-teacher">
+                                <i class="icon-right-top"></i>
+                                @teacherDto.Name.ToUpper()<br />
+                                (@teacherDto.Job)
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="row mt30">
+                @foreach (var teacherDto in Model.TeacherDtos.Skip(3).Take(3))
+                {
+                    <div class="col-sm-4">
+                        <div class="box-img-teacher">
+                            <a href="@Url.Action("Teacher", new {teacherId = teacherDto.Id, name =Html.ConvertToUnSign(teacherDto.Name)})">
+                                <img src="@Path.Combine("/images/teacher", teacherDto.Image)" alt="@teacherDto.Name" class="img-responsive" />
+                            </a>
+                        </div>
+                        <div class="box-name-teacher">
+                            <div class="name-teacher">
+                                <i class="icon-right-top"></i>
+                                @teacherDto.Name.ToUpper()<br />
+                                (@teacherDto.Job)
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        @Html.Action("LeftAbout")
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(".scrollbar-inner").scrollbar();
+    </script>
+}

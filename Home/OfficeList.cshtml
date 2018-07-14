@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Ocean2014.ViewModel.OfficeDto>
+<div class="container mt30 wow animated fadeInUp">
+    <div class="module-name text-center">
+        <h2>@Resource.ListOffices</h2>
+    </div>
+    <div class="bg-top-office"></div>
+    @{
+        var i = 1;
+    }
+    @foreach (var office in Model)
+    {
+        if (i % 3 == 1)
+        {
+            <div class="line-office"></div>
+            @Html.Raw("<div class='row'>")
+        }
+        <div class="col-sm-4 col-xs-12 hvr-float-shadow office-item">
+            <div class="caption-office">
+                <div class="office-name font-myriad-pro-bold">
+                    @office.Name
+                </div>
+                <address class="font-dax-light">
+                    <i class="fa fa-map-marker"></i> @office.Address<br />
+                    <a href="tel:@office.Phone"><i class="fa fa-phone"></i> @office.Phone</a><br />
+                    <i class="fa fa-envelope-o"></i> @office.Email
+                </address>
+            </div>
+        </div>
+        if (i % 3 == 0 || i == Model.Count())
+        {
+            @Html.Raw("</div>")
+        }
+        i++;
+    }
+    <div class="news-line-1"></div>
+    <div class="text-center mt20 border-see-more">
+        <a href="javascript:;" onclick="showMoreOffice()" class="btn btn-sm btn-ocean font-dax-light hvr-shutter-out-vertical">Click để xem thêm<i class="fa fa-caret-down"></i></a>
+    </div>
+</div>

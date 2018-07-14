@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Index2";
+}
+
+<div class="container mt30">
+    <div class="row">
+        @Html.Action("LeftAbout")
+        <div class="col-sm-9">
+            <div class="box-module-center-reserve" style="margin-top: -2px">
+                Đội ngũ giáo viên và phương pháp giảng dạy
+            </div>
+            <div class="box-content-gv">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="box-avartar-teacher">
+                            <div class="box-img-teaher-content">
+                                <img src="~/Content/images/skin/gv-4.jpg" class="img-responsive" />
+                            </div>
+                            <div class="name-teacher teacher-name-content">
+                                <i class="icon-right-top"></i>
+                                MARIA Teacher<br />
+                                TEACHING KNOWLEGE TEST
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="box-content-border-top">
+                            <div class="box-content-detail-gv" style="height: 300px">
+                                <p>Giáo viên tại OCEAN EDU: 100% Giáo viên nước ngoài đóng vai trò quyết định thành công cho sản phẩm của OCEAN EDU. Hiện nay giáo viên của Ocean Edu bao gồm các Giáo viên bản ngữ (Anh, Mỹ, Newzeland, Úc) và các Giáo viên Châu Á (Singapore, Philipine). Tất cả giáo viên đều có trình độ học vấn từ Đại học trở lên được đào tạo bài bản, có nghiệp vụ sư phạm và kinh nghiệm lâu năm và nhận được các chứng chỉ TESOL, CELTA là những chứng chỉ quốc tế về phương pháp giảng dạy tiếng Anh dành cho giáo viên dạy Anh ngữ tại những quốc gia sử dụng Tiếng Anh như một ngoại ngữ.</p>
+                                <p>Với phương pháp giảng dạy lấy người học là trung tâm, giáo viên OCEAN EDU giúp cho học viên phát huy được tính chủ động, tích cực trong học tập để nâng cao kỹ năng sử dụng ngoại ngữ. Với sự tận tâm, nhiệt huyết và năng động, Giáo viên của OCEAN EDU luôn nắm bắt được tâm lý của học sinh Việt Nam, áp dụng và tìm kiếm những phương pháp giảng dạy hay, mới lạ và hiệu quả nhất nhằm đáp ứng nhu cầu học ngoại ngữ và đem đến thành tích học tập tốt nhất cho họ.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-bottom-box-center"></div>
+            <div class="box-related-bg">
+                Bài viết liên quan
+            </div>
+            @for (int i = 0; i < 3; i++)
+            {
+                <div class="box-list-news">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img src="~/Content/images/skin/gv-5.jpg" class="img-responsive" />
+                        </div>
+                        <div class="col-sm-8 col-xs-9">
+                            <a href="" class="news-title">Dạy anh ngữ tại các quốc gia sử dụng tiếng Anh như một ngoại ngữ</a>
+                            <p>Giáo viên tại OCEAN EDU: 100% Giáo viên nước ngoài đóng vai trò quyết định thành công cho sản phẩm của OCEAN EDU. Hiện nay giáo viên của Ocean Edu bao gồm các Giáo viên bản ngữ (Anh, Mỹ, Newzeland, Úc) và các Giáo viên Châu Á (Singapore, Philipine). </p>
+                            <a href="" class="label label-success pull-right">Xem tiếp</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

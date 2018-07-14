@@ -1,0 +1,291 @@
+﻿@model Ocean2014.ViewModel.HeaderViewModel
+<header>
+    <div id="header-line">
+        <a href="/"><img src="~/Content/images/Vietnam_Flag.jpg" alt="Việt Nam" height="20" /></a>
+        <a href="http://en.ocean.edu.vn/"><img src="~/Content/images/english_flag.jpg" alt="English" height="20" /></a>
+    </div>
+    <div class="container">
+        <div class="line-menu clearfix" id="menu-sticky">
+            <div id="logo">
+                <a href="/"><img src="~/Content/images/v2/logo.png" alt="Ocean EDU" /></a>
+            </div>
+            <nav id="nav-top-demo">
+                <div class="top-header clearfix">
+                    <div class="slogan">HỆ THỐNG ANH NGỮ QUỐC TẾ</div>
+                    <div class="right-top">
+                        <div class="social-box-top">
+                            <a href="https://www.facebook.com/OceanEduVietNam/" target="blank"><i class="fa fa-facebook-square"></i></a>
+                            <a href="https://www.youtube.com/channel/UCutkhO_UB3kTuPtJCiaQY-g" target="blank"><i class="fa fa-youtube-square"></i></a>
+                            <a href="https://twitter.com/edu_ocean" target="blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+							<a href="https://www.linkedin.com/company/ocean-edu-vi%E1%BB%87t-nam?trk=biz-companies-cym" target="blank"><i class="fa fa-linkedin-square"></i></a>
+                        </div>
+                        <a href="tel:19006494"><img src="~/Content/images/v2/hotline.png" alt="Hotline" /></a>
+                    </div>
+                </div>
+                <ul id="menu-desktop" class="hidden-xs hidden-sm">
+                    <li><a href="@Url.Action("Index", new { Culture })"><i class="fa fa-home fa-2x"></i></a></li>
+                    <li>
+                        <a href="javascript:;" class="hvr-overline-from-center">@Resource.About</a>
+                        <ul class="sub-menu">
+                            @foreach (var about in Model.Abouts.Take(2))
+                            {
+                                <li><span class="icon-menu-left"></span> <a href="@Url.Action("About", new {aboutId = about.Id, name = Html.ConvertToUnSign(about.Subject), Culture})">@about.Subject</a></li>
+                            }
+                            <li><span class="icon-menu-left"></span> <a href="@Url.Action("ListTeacher", new {Culture})">@Resource.Teachers</a></li>
+                            @foreach (var about in Model.Abouts.Skip(2))
+                            {
+                                <li><span class="icon-menu-left"></span> <a href="@Url.Action("About", new {aboutId = about.Id, name = Html.ConvertToUnSign(about.Subject), Culture})">@about.Subject</a></li>
+                            }
+                            @*<li><span class="icon-menu-left"></span> <a href="@Url.Action("ListFacility", new {Culture})">@Resource.Classrooms</a></li>*@
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hvr-overline-from-center">Tin tức</a>
+                        <ul class="sub-menu">
+                            @foreach (var category in Model.Categorieses.Where(a => a.ParentId == 1))
+                            {
+                                <li>
+                                    <span class="icon-menu-left"></span> <a href="@Url.Action("ListNews", new {catId = category.Id, name = Html.ConvertToUnSign(category.Name), Culture})">@category.Name</a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                    <li id="all-course">
+                        <a href="javascript:;" class="hvr-overline-from-center">@Resource.ChuongTrinh</a>
+                        <ul class="sub-menu">
+                            @foreach (var groupCourse in Model.GroupCourses)
+                            {
+                                <li>
+                                    <span class="icon-menu-left"></span> <a href="@Url.Action("GroupCourse", new {gId = groupCourse.Id, name = Html.ConvertToUnSign(groupCourse.Name), Culture})">@(UICulture == "vi-VN" ? groupCourse.Name : groupCourse.Name_En)</a>
+                                    @if (Model.Courses.Any(a => a.GroupId == groupCourse.Id))
+                                    {
+                                        <ul>
+                                            @foreach (var course in Model.Courses.Where(a => a.GroupId == groupCourse.Id))
+                                            {
+                                                var url = Url.Action("Course", new { courseId = course.Id, name = Html.ConvertToUnSign(course.Name), Culture });
+                                                if (course.Url != null)
+                                                {
+                                                    url = course.Url;
+                                                }
+                                                <li><a href="@url"><i class="fa fa-angle-right"></i> @course.Name</a></li>
+                                            }
+                                        </ul>
+                                    }
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" target="blank">Cuộc thi</a>
+                        <ul class="sub-menu">
+                            <li><span class="icon-menu-left"></span> <a href="/vi-VN/tin-tuc/cuoc-thi-ocean-edu-216">TIN TỨC CUỘC THI</a></li>
+                            <li><span class="icon-menu-left"></span> <a href="http://ocean.edu.vn/toeflprimary/">TOEFL PRIMARY</a></li>
+                            <li><span class="icon-menu-left"></span> <a href="http://ocean.edu.vn/toefljunior/">TOEFL JUNIOR</a></li>
+                            <li><span class="icon-menu-left"></span> <a href="http://ocean.edu.vn/cambridge/">CAMBRIDGE PRIMARY</a></li>
+                            <li><span class="icon-menu-left"></span> <a href="http://cambridgejunior.ocean.edu.vn/">CAMBRIDGE JUNIOR</a></li>
+                            <li><span class="icon-menu-left"></span> <a href="#">IELTS and TOEIC Circle of Champions</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="http://duhoc.ocean.edu.vn" target="blank">Du học</a></li>
+                    <li><a href="http://ocean.edu.vn/blog/" target="blank" class="hvr-overline-from-center">Blog</a></li>
+                    <li>
+                        <a href="@Url.Action("Scheduler")" class="hvr-overline-from-center">@Resource.LichKhaiGiang</a>
+                        @*@if (Model.Categorieses.Any(a => a.ParentId == 126))
+                        {
+                            <ul class="sub-menu two-col">
+                                @foreach (var category in Model.Categorieses.Where(a => a.ParentId == 126))
+                                {
+                                    <li><span class="icon-menu-left"></span> <a href="@Url.Action("ListNews", new {catId = category.Id, name = Html.ConvertToUnSign(category.Name), Culture})">@category.Name</a></li>
+                                }
+                            </ul>
+                        }*@
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hvr-overline-from-center">Học viên</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <span class="icon-menu-left"></span> <a href="@Url.Action("StudentResult")">@Resource.KetQuaHoc</a>
+                                @*@if (Model.Categorieses.Any(a => a.ParentId == 34))
+                                {
+                                    <ul class="sub-menu two-col-left">
+                                        @foreach (var category in Model.Categorieses.Where(a => a.ParentId == 34))
+                                        {
+                                            <li><a href="@Url.Action("ListNews", new {catId = category.Id, name = Html.ConvertToUnSign(category.Name), Culture})"><i class="fa fa-angle-right"></i> @category.Name</a></li>
+                                        }
+                                    </ul>
+                                }*@
+                            </li>
+                            <li>
+                                <span class="icon-menu-left"></span> <a href="/vi-VN/tin-tuc/tam-su-hoc-vien-210">@Resource.TuongTacHocVien</a>
+                                @*<ul>
+                                        @foreach (var category in Model.Categorieses.Where(a => a.ParentId == 209))
+                                        {
+                                            <li><a href="@Url.Action("ListNews", new {catId = category.Id, name = Html.ConvertToUnSign(category.Name), Culture})">@category.Name</a></li>
+                                        }
+                                    </ul>*@
+                            </li>
+                            <li><span class="icon-menu-left"></span> <a href="#">Học viên xuất sắc</a></li>
+                            <li><span class="icon-menu-left"></span> <a href="/vi-VN/tin-tuc/hoi-dap-212">Hỏi đáp</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hvr-overline-from-center">Thư viện</a>
+                        <ul class="sub-menu">
+                            <li><span class="icon-menu-left"></span> @Html.ActionLink(Resource.Album, "ProfileImage", new { Culture })</li>
+                            <li><span class="icon-menu-left"></span> @Html.ActionLink("Video - Clip", "ListVideo")</li>
+                            <li><span class="icon-menu-left"></span> @Html.ActionLink(Resource.Document, "Document", new { Culture })</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;">Xem thêm</a>
+                        <ul class="sub-menu">
+                            <li><span class="icon-menu-left"></span> <a href="http://jobs.ocean.edu.vn" target="blank">@Resource.TuyenDung</a></li>
+                            <li><span class="icon-menu-left"></span> <a href="@Url.Action("Contact", new{ Culture })">@Resource.Contact</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="hidden-md hidden-lg">
+                    <div class="slogan-mobile">
+                        Học tiếng anh với <strong class="font-colossalis">100%</strong> giáo viên nước ngoài
+                    </div>
+                    <div class="icon-bar" onclick="$('#menu-mobile').fadeIn()">
+                        <i class="fa fa-bars"></i>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </nav>
+        </div>
+    </div>
+
+</header>
+<div id="menu-mobile">
+    <div class="close-button"><a href="javascript:;" onclick="$('#menu-mobile').fadeOut()"><i class="fa fa-remove"></i></a></div>
+    <ul class="scrollbar-inner">
+        <li>@Html.ActionLink(Resource.Home, "Index", new { Culture })</li>
+        <li>
+            <a href="javascript:;">@Resource.About</a>
+            <ul class="sub-menu">
+                @foreach (var about in Model.Abouts.Take(2))
+                {
+                    <li><a href="@Url.Action("About", new {aboutId = about.Id, name = Html.ConvertToUnSign(about.Subject), Culture})">@about.Subject</a></li>
+                }
+                <li><a href="@Url.Action("ListTeacher", new {Culture})">@Resource.Teachers</a></li>
+                @foreach (var about in Model.Abouts.Skip(2))
+                {
+                    <li><a href="@Url.Action("About", new {aboutId = about.Id, name = Html.ConvertToUnSign(about.Subject), Culture})">@about.Subject</a></li>
+                }
+                @*<li><a href="@Url.Action("ListFacility", new {Culture})">@Resource.Classrooms</a></li>*@
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">Tin tức</a>
+            <ul class="sub-menu">
+                @foreach (var category in Model.Categorieses.Where(a => a.ParentId == 1))
+                {
+                    <li>
+                        <a href="@Url.Action("ListNews", new {catId = category.Id, name = Html.ConvertToUnSign(category.Name), Culture})">@category.Name</a>
+                    </li>
+                }
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">@Resource.ChuongTrinh</a>
+            <ul class="sub-menu">
+                @foreach (var groupCourse in Model.GroupCourses)
+                {
+                    <li>
+                        <a href="@Url.Action("GroupCourse", new {gId = groupCourse.Id, name = Html.ConvertToUnSign(groupCourse.Name), Culture})">@(UICulture == "vi-VN" ? groupCourse.Name : groupCourse.Name_En)</a>
+                        @if (Model.Courses.Any(a => a.GroupId == groupCourse.Id))
+                        {
+                            <ul>
+                                @foreach (var course in Model.Courses.Where(a => a.GroupId == groupCourse.Id))
+                                {
+                                    <li><a href="@Url.Action("Course", new {courseId = course.Id, name = Html.ConvertToUnSign(course.Name), Culture})">@course.Name</a></li>
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">Cuộc thi</a>
+            <ul class="sub-menu">
+                <li><a href="http://ocean.edu.vn/toeflprimary/">Toefl Primary</a></li>
+                <li><a href="http://ocean.edu.vn/toefljunior/">Toefl Junior</a></li>
+                <li><a href="http://ocean.edu.vn/cambridge/">Cambridge Primary</a></li>
+                <li><a href="http://cambridgejunior.ocean.edu.vn/">Cambridge Junior</a></li>
+                <li><a href="#">IELTS and TOEIC Circle of Champions</a></li>
+            </ul>
+        </li>
+        <li><a href="http://ocean.edu.vn/blog/" target="blank">Blog</a></li>
+        <li>
+            <a href="javascript:;">Học viên</a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="@Url.Action("Scheduler")">@Resource.LichKhaiGiang</a>
+                    @*@if (Model.Categorieses.Any(a => a.ParentId == 126))
+                    {
+                        string cssClass = null;
+                        if (Model.Categorieses.Count(a => a.ParentId == 126) > 10)
+                        {
+                            cssClass = "two-col";
+                        }
+                        <ul class="sub-menu @cssClass">
+                            @foreach (var category in Model.Categorieses.Where(a => a.ParentId == 126))
+                            {
+                                <li><a href="@Url.Action("ListNews", new {catId = category.Id, name = Html.ConvertToUnSign(category.Name), Culture})">@category.Name</a></li>
+                            }
+                        </ul>
+                    }*@
+                </li>
+                <li>
+                    <a href="@Url.Action("StudentResult")">@Resource.KetQuaHoc</a>
+                    @*@if (Model.Categorieses.Any(a => a.ParentId == 34))
+                    {
+                        string cssClass = null;
+                        if (Model.Categorieses.Count(a => a.ParentId == 34) > 10)
+                        {
+                            cssClass = "two-col";
+                        }
+                        <ul class="sub-menu @cssClass">
+                            @foreach (var category in Model.Categorieses.Where(a => a.ParentId == 34))
+                            {
+                                <li><a href="@Url.Action("ListNews", new {catId = category.Id, name = Html.ConvertToUnSign(category.Name), Culture})">@category.Name</a></li>
+                            }
+                        </ul>
+                    }*@
+                </li>
+                <li>
+                    <a href="javascript:;">@Resource.TuongTacHocVien</a>
+                    <ul class="sub-menu">
+                        @foreach (var category in Model.Categorieses.Where(a => a.ParentId == 209))
+                        {
+                            <li><a href="@Url.Action("ListNews", new {catId = category.Id, name = Html.ConvertToUnSign(category.Name), Culture})">@category.Name</a></li>
+                        }
+                    </ul>
+                </li>
+                <li><a href="#">Học viên xuất sắc</a></li>
+                <li><a href="/vi-VN/tin-tuc/hoi-dap-212">Hỏi đáp</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">Thư viện</a>
+            <ul class="sub-menu">
+                <li>@Html.ActionLink(Resource.Album, "ProfileImage", new { Culture })</li>
+                <li>@Html.ActionLink("Video - Clip", "ListVideo")</li>
+                <li>@Html.ActionLink(Resource.Document, "Document", new { Culture })</li>
+            </ul>
+        </li>
+        <li><a href="@Url.Action("Contact", new { Culture })">Liên hệ</a></li>
+        <li>
+            <a href="javascript:;">Xem thêm</a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="http://jobs.ocean.edu.vn" target="blank">@Resource.TuyenDung</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

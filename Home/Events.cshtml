@@ -1,0 +1,39 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Ocean2014.Models.Event>
+@{
+    ViewBag.Title = "Sự kiện";
+    ViewBag.Description = "Những sự kiện mới nhất của Ocean EDU. Hãy cùng tìm hiểu và tham gia sự kiện HOT nhất.";
+    ViewBag.Keywords = "sự kiện, event, sự kiện Ocean EDU, Ocean EDU event";
+}
+
+<div class="container">
+    <div class="module-name text-center">
+        <h1>Sự kiện</h1>
+    </div>
+    <div class="news-line-1"></div>
+    <div class="row">
+        @foreach (var events in Model)
+        {
+            <div class="col-md-4 col-sm-6 col-xs-12 item-event">
+                @if (events.Image != null)
+                {
+                    <a href="@Url.Action("EventDetail", new{eventId = events.Id, name =Html.ConvertToUnSign(events.Name)})" class="img-thumb hvr-box-shadow-outset">
+                        <img src="@events.Image?w=360&h=180&mode=crop" class="img-responsive center-block" alt="@events.Name" />
+                    </a>
+                }
+                <h2><a href="@Url.Action("EventDetail", new{eventId = events.Id, name =Html.ConvertToUnSign(events.Name)})">@events.Name</a></h2>
+                <p>
+                    <i class="fa fa-location-arrow"></i> @events.Address
+                </p>
+                <p>
+                    <i class="fa fa-calendar"></i> @Html.DisplayFor(a => events.BeginTime) - <i class="fa fa-calendar-check-o"></i> @Html.DisplayFor(a => events.EndTime)
+                </p>
+                <a href="@Url.Action("EventDetail", new{eventId = events.Id, name =Html.ConvertToUnSign(events.Name)})" class="btn btn-ocean btn-block hvr-bounce-to-right"><i class="fa fa-angle-right"></i> Chi tiết</a>
+            </div>
+        }
+    </div>
+    @if (Model.PageCount > 1)
+    {
+        <div class="text-center">@Html.PagedListPager(Model, page => Url.Action("Events", new { page }))</div>
+    }
+</div>

@@ -1,0 +1,79 @@
+﻿@using PagedList.Mvc
+@model Ocean2014.ViewModel.CategoryDetailViewModel
+@{
+    ViewBag.Title = Model.Categories.Name;
+    ViewBag.Description = Model.Categories.Description ?? Model.Categories.Name;
+    ViewBag.Keywords = Model.Categories.Name;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 mt30">
+            <ul class="breadcrumb">
+                <li><a href="/"><i class="fa fa-home"></i></a></li>
+                <li class="active">@Model.Categories.Name</li>
+            </ul>
+            <h1 id="default-title" class="font-colossalis">@Model.Categories.Name</h1>
+            @if (Model.Newses.Any())
+            {
+                foreach (var news in Model.Newses)
+                {
+                    <div class="box-list-course">
+                        <div class="row">
+                            <div class="col-sm-4 col-xs-6">
+                                <div class="box-img-hover">
+                                    <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})">
+                                        <img src="@news.Image?w=262&h=170&mode=crop" alt="@news.Subject" class="img-responsive"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 col-xs-6">
+                                <div class="icon-top-left"></div>
+                                <h2>
+                                    <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})" class="news-title">@news.Subject</a>
+                                </h2>
+                                <p class="hidden-xs">@news.Description</p>
+                                <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})" class="label label-success pull-right mt15">Xem tiếp</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                if (Model.Newses.PageCount > 1)
+                {
+                    <div class="text-center">@Html.PagedListPager(Model.Newses, page => Url.Action("ListNews", new {page, catId = Model.Categories.Id}), new PagedListRenderOptions {MaximumPageNumbersToDisplay = 5})</div>
+                }
+            }
+            else
+            {
+                <p class="alert alert-info">@Resource.Updating</p>
+            }
+        </div>
+        <div class="col-md-3 mt30">
+            @Html.Action("RegisterForm")
+
+            <div class="box-related-bg">
+                @Resource.HotNews
+            </div>
+            @foreach (var news in Model.HotNewsDtos)
+            {
+                <div class="box-list-course">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="box-img-hover">
+                                <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})"><img src="@news.Image?w=360&h=200&mode=crop" alt="@news.Subject" class="img-responsive"/></a>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="icon-top-left"></div>
+                            <h3>
+                                <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})" class="news-title">@news.Subject</a>
+                            </h3>
+                            <p>@news.Description</p>
+                            <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})" class="label label-success pull-right">@Resource.SeeDetail</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

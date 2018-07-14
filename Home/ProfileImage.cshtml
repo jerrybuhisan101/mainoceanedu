@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Ocean File";
+    ViewBag.Description = "Ocean File";
+    ViewBag.Keywords = "Ocean File";
+}
+
+<div class="container mt30">
+    <h1 id="default-title">Ocean File</h1>
+    <div class="row" id="albums">
+        @for (var i = 1; i < 21; i++)
+        {
+            <div class="col-sm-3">
+                <div class="box-album">
+                    <a href="@string.Format("/Content/images/profile/{0}.jpg", i)" class="fancybox" rel="album">
+                        <img src="@string.Format("/Content/images/profile/{0}.jpg", i)" class="img-responsive" alt="ocean profile" />
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section scripts
+{
+    <script>
+        $(function() {
+            $(".fancybox").fancybox();
+        })
+    </script>
+}

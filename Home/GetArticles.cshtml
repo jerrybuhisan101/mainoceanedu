@@ -1,0 +1,40 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Ocean2014.ViewModel.NewsDto>
+
+@if (Model.Any())
+{
+    foreach (var news in Model)
+    {
+        <div class="box-list-course">
+            <div class="row">
+                <div class="col-sm-4 col-xs-6">
+                    <div class="box-img-hover">
+                        <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})">
+                            <img src="@news.Image?w=262&h=170&mode=crop" alt="@news.Subject" class="img-responsive" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-xs-6">
+                    <div class="icon-top-left"></div>
+                    <h2>
+                        <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})" class="news-title">@news.Subject</a>
+                    </h2>
+                    <p class="hidden-xs">@news.Description</p>
+                    <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})" class="label label-success pull-right mt15">Xem tiếp</a>
+                </div>
+            </div>
+        </div>
+    }
+    if (Model.PageCount > 1)
+    {
+        <div class="text-center">
+            @Html.PagedListPager(Model, page => Url.Action("GetArticles", new { page, catId = ViewBag.CategoryId }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "resultArticles" }))
+        </div>
+    }
+}
+else
+{
+    <p class="alert alert-info">
+        @Resource.Updating
+    </p>
+}

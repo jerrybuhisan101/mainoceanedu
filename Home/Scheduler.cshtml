@@ -1,0 +1,81 @@
+﻿@model Ocean2014.ViewModel.SchedulerViewModel
+@{
+    ViewBag.Title = Resource.LichKhaiGiang;
+    ViewBag.Description = Resource.LichKhaiGiang;
+    ViewBag.Keywords = Resource.LichKhaiGiang;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 mt30">
+            <ul class="breadcrumb">
+                <li><a href="/"><i class="fa fa-home"></i></a></li>
+                <li class="active">@Resource.LichKhaiGiang</li>
+            </ul>
+            <h1 id="default-title" class="font-colossalis">Chọn tỉnh thành muốn xem</h1>
+            <ul class="list-city">
+                @foreach (var city in Model.Cities)
+                {
+                    <li data-id="@city.Id"><a href="javascript:;" onclick="getCategories(@city.Id)">@city.Name</a></li>
+                }
+            </ul>
+            <div id="resultCategories"></div>
+            <div id="resultArticles"></div>
+        </div>
+        <div class="col-md-3 mt30">
+            @Html.Action("RegisterForm")
+            <div class="box-related-bg">
+                @Resource.HotNews
+            </div>
+            @foreach (var news in Model.HotNewsDtos)
+            {
+                <div class="box-list-course">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="box-img-hover">
+                                <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})"><img src="@news.Image?w=360&h=200&mode=crop" alt="@news.Subject" class="img-responsive" /></a>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="icon-top-left"></div>
+                            <h3>
+                                <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})" class="news-title">@news.Subject</a>
+                            </h3>
+                            <p>@news.Description</p>
+                            <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})" class="label label-success pull-right">@Resource.SeeDetail</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        function getCategories(cityId) {
+            $("#resultArticles").html('');
+            $("ul.list-city li").removeClass("active");
+            $("ul.list-city li[data-id='" + cityId + "']").addClass("active");
+            $.getJSON("/Home/GetCategories",
+                { cityId, parentId : 126 }, function (data) {
+                    var items = [];
+                    items.push("<ul class='list-categories'>");
+                    $.each(data, function (key, val) {
+                        items.push("<li data-id='"+val.Id+"'><a href='javascript:;' onclick='getArticle(" + val.Id + ")'>" + val.Name + "</a></li>");
+                    });
+                    items.push("</ul>");
+                    $("#resultCategories").html(items.join(""));
+                });
+        }
+
+        function getArticle(catId, page = 1) {
+            $("ul.list-categories li").removeClass("active");
+            $("ul.list-categories li[data-id='" + catId + "']").addClass("active");
+            $.get("Home/GetArticles", { catId, page }, function (data) {
+                $("#resultArticles").html(data);
+            });
+        }
+    </script>
+}

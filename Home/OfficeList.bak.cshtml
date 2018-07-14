@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Ocean2014.ViewModel.OfficeDto>
+<div class="container mt30 triggerAnimation animated" data-animate="fadeInUp">
+    <div class="module-name text-center">
+        <h2>@Resource.ListOffices</h2>
+    </div>
+    <div class="bg-top-office"></div>
+    <div class="row" id="list-offices">
+        @{
+            var i = 1;
+        }
+        @foreach (var office in Model)
+        {
+            var bg = "background-office";
+            var bg2 = "bg-office-2";
+            if (i % 2 == 0)
+            {
+                bg = "background-office-reverse";
+                bg2 = "bg-office-2-reserve";
+            }
+            <div class="col-sm-6 col-xs-12 hvr-float-shadow office-item">
+                <div class="@bg">
+                    <div class="@bg2"> </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            @if (i % 2 == 1)
+                            {
+                                <div class="bg-office-cheo"></div>
+                            }
+                            @if (office.Image != null)
+                            {
+                                <img src="@string.Format("http://ocean.edu.vn{0}", office.Image)?w=156&h=104&mode=crop" class="img-responsive box7" alt="@office.Name"/>
+                            }
+                        </div>
+                        <div class="col-xs-8">
+                            @if (i % 2 == 0)
+                            {
+                                <div class="bg-office-cheo-reserve"></div>
+                            }
+                            <div class="caption-office">
+                                <div class="office-name font-myriad-pro-bold">
+                                    <a href="@office.LinkAlbum">@office.Name</a>
+                                </div>
+                                <address class="font-dax-light">
+                                    <i class="fa fa-map-marker"></i> @office.Address<br />
+                                    <i class="fa fa-phone"></i> @office.Phone<br />
+                                    <i class="fa fa-envelope-o"></i> @office.Email
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            i++;
+        }
+    </div>
+    <div class="text-center">
+        <a href="javascript:;" onclick="showMoreOffice()" class="btn btn-sm btn-ocean font-dax-light hvr-shutter-out-vertical">@* @Resource.MoreOffices *@  See more branches<i class="fa fa-caret-down"></i></a>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Trang 404 | 404 Page not found";
+}
+
+<div class="container">
+    <h1 id="default-title" class="font-colossalis">Trang 404 | 404 Page not found</h1>
+    <p class="alert alert-info">
+        @Resource.NotFound
+    </p>
+    <script>
+        (function () {
+            var cx = '010863523938972100974:zdvht39i6x4';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+        })();
+    </script>
+    <gcse:search></gcse:search>
+</div>

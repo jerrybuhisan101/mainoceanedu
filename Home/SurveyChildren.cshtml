@@ -1,0 +1,475 @@
+﻿@model Ocean2014.ViewModel.SurveyChildrenViewModel
+<form action="@Url.Action("SubmitSurveySurveyChildren")" method="POST" class="form-horizontal mt30 mb50" onsubmit="return checkForm(this)">
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(a => a.SurveyChildren.ParentFullName, new { @class = "control-label col-sm-3" })
+        <div class="col-sm-9">
+            @Html.TextBoxFor(a => a.SurveyChildren.ParentFullName, new { @class = "form-control", required = "" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(a => a.SurveyChildren.FullName, new { @class = "control-label col-sm-3" })
+        <div class="col-sm-9">
+            @Html.TextBoxFor(a => a.SurveyChildren.FullName, new { @class = "form-control", required = "" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(a => a.SurveyChildren.Mobile, new { @class = "control-label col-sm-3" })
+        <div class="col-sm-9">
+            @Html.TextBoxFor(a => a.SurveyChildren.Mobile, new { @class = "form-control", required = "" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(a => a.SurveyChildren.Address, new { @class = "control-label col-sm-3" })
+        <div class="col-sm-9">
+            @Html.TextBoxFor(a => a.SurveyChildren.Address, new { @class = "form-control", required = "" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(a => a.SurveyChildren.Email, new { @class = "control-label col-sm-3" })
+        <div class="col-sm-9">
+            @Html.TextBoxFor(a => a.SurveyChildren.Email, new { @class = "form-control", type = "email", required = "" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                @Html.LabelFor(a => a.SurveyChildren.ClassNumber, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(a => a.SurveyChildren.ClassNumber, new { @class = "form-control", type = "number", required = "", min = 1, max = 12 })
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="form-group">
+                @Html.LabelFor(a => a.SurveyChildren.SchoolName, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(a => a.SurveyChildren.SchoolName, new { @class = "form-control", required = "" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="background: #f6f6f6; padding: 15px 30px;">
+        <div class="form-group" id="1">
+            <p><strong>1.Con em quý vị đã (đang) tham gia chương trình đào tạo tiếng Anh ở đâu?</strong></p>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="radio" value="1" name="HocTiengAnhODau" /> Ở trường
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="radio" value="2" name="HocTiengAnhODau" /> Học tiếng Anh với gia sư
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="radio" value="3" name="HocTiengAnhODau" /> Ở trung tâm tiếng Anh
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="radio" value="4" name="HocTiengAnhODau" /> Học thêm ở nhà thầy cô tổ chức
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="radio" value="5" name="HocTiengAnhODau" /> Khác
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" id="2">
+            <p><strong>2. Phụ huynh đánh giá thế nào về tầm quan trọng của tiếng Anh và việc học tiếng Anh</strong></p>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="radio" value="1" name="DanhGiaTamQuanTrong" /> Rất quan trọng
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="radio" value="2" name="DanhGiaTamQuanTrong" /> Quan trọng
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="radio" value="3" name="DanhGiaTamQuanTrong" /> Bình thường
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="radio" value="4" name="DanhGiaTamQuanTrong" /> Không quan trọng
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="radio" value="5" name="DanhGiaTamQuanTrong" /> Rất không quan trọng
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" id="3">
+            <p><strong>3. Mục đích học tiếng Anh cho con em là gì (có thể chọn nhiều đáp án)?</strong></p>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="checkbox" value="1" name="MucDichHocTiengAnh" /> Để học tốt môn tiếng Anh ở trường
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="checkbox" value="2" name="MucDichHocTiengAnh" /> Để chuẩn bị đi du học
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="checkbox" value="3" name="MucDichHocTiengAnh" /> Để trang bị kiến thức thời hội nhập
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="checkbox" value="4" name="MucDichHocTiengAnh" /> Học vì sở thích, đam mê
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="checkbox" value="5" name="MucDichHocTiengAnh" /> Để tham gia các kỳ thi về tiếng Anh
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="checkbox" value="6" name="MucDichHocTiengAnh" /> Khác
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" id="4">
+            <p><strong>4. Con em mình rất muốn tham gia khóa học tiếng Anh để nâng cao trình độ nhưng gặp trở ngại?</strong></p>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="radio" value="1" name="TroNgaiHocTiengAnh" /> Bận học ở trường
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="radio" value="2" name="TroNgaiHocTiengAnh" /> Chưa sắp xếp thời gian
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="radio" value="3" name="TroNgaiHocTiengAnh" /> Chưa chuẩn bị đủ học phí
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="radio" value="4" name="TroNgaiHocTiengAnh" /> Chưa chọn được nơi học tập ưng ý
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="radio" value="5" name="TroNgaiHocTiengAnh" /> Khác
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" id="5">
+            <p>
+                <strong>5. Trước khi tham gia khóa học phụ huynh mong muốn được?</strong>
+            </p>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="radio" value="1" name="MongMuon" /> Kiểm tra đầu vào và tư vấn giải pháp học
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="radio" value="2" name="MongMuon" /> Học trải nghiệm chương trình
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="radio" value="3" name="MongMuon" /> Tham quan cơ sở vật chất nơi đào tạo
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="radio" value="4" name="MongMuon" /> Khác
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" id="6">
+            <p>
+                <strong>6. Khi tham gia các khoá đào tạo tiếng Anh phụ huynh cần hỗ trợ thêm điều gì?</strong>
+            </p>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="radio" value="1" name="CanHoTroThem" /> Học bổng ưu đãi cho học phí
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="radio" value="2" name="CanHoTroThem" /> Kết quả sau khi con hoàn thành khóa học
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="radio" value="3" name="CanHoTroThem" /> Kỹ năng hội nhập và khả năng sử dụng tiếng Anh
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="radio" value="4" name="CanHoTroThem" /> Khác
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" id="7">
+            <p>
+                <strong>7. Phụ huynh có yêu cầu gì về giáo viên dạy tiếng Anh?</strong>
+            </p>
+            <div class="col-sm-12">
+                <p><input type="radio" value="1" name="YeuCauGiaoVien" /> Giáo viên trong nước (có sự đồng điệu về ngôn ngữ, về văn hóa sẽ giúp việc học và giao tiếp của con trong quá trình học trở nên dễ dàng hơn)</p>
+                <p><input type="radio" value="2" name="YeuCauGiaoVien" /> Giáo viên nước ngoài (khiến việc giao tiếp bằng tiếng nước ngoài của con trở nên thường xuyên hơn)</p>
+                <p><input type="radio" value="3" name="YeuCauGiaoVien" /> Khác</p>
+            </div>
+        </div>
+        <div class="form-group" id="8">
+            <p>
+                <strong>8. Theo phụ huynh, thời gian học nào là lý tưởng nhất cho con (Có thể lựa chọn nhiều phương án)?</strong>
+            </p>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="checkbox" value="1" name="ThoiGianHoc" /> Sáng
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="checkbox" value="2" name="ThoiGianHoc" /> Trong tuần
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="checkbox" value="3" name="ThoiGianHoc" /> Chiều
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="checkbox" value="4" name="ThoiGianHoc" /> Cuối tuần
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="checkbox" value="5" name="ThoiGianHoc" /> Tối
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="checkbox" value="6" name="ThoiGianHoc" /> Khác
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" id="9">
+            <p>
+                <strong>9. Tầm ảnh hưởng của các yếu tố đến quyết định lựa chọn và học ở một trung tâm tiếng Anh của phụ huynh? (Với 1 là quan trọng nhất và 6 là không quan trọng)</strong>
+            </p>
+            <div class="col-sm-12">
+                <table class="table table-bordered">
+                    <tr class="bg-info">
+                        <th>Nội dung</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                    </tr>
+                    <tr>
+                        <td>Chất lượng giáo viên</td>
+                        <td><input type="radio" value="1" name="AH_ChatLuongGiaoVien" /></td>
+                        <td><input type="radio" value="2" name="AH_ChatLuongGiaoVien" /></td>
+                        <td><input type="radio" value="3" name="AH_ChatLuongGiaoVien" /></td>
+                        <td><input type="radio" value="4" name="AH_ChatLuongGiaoVien" /></td>
+                        <td><input type="radio" value="5" name="AH_ChatLuongGiaoVien" /></td>
+                        <td><input type="radio" value="6" name="AH_ChatLuongGiaoVien" /></td>
+                    </tr>
+                    <tr>
+                        <td>Giáo trình/Nội dung giảng dạy</td>
+                        <td><input type="radio" value="1" name="AH_GiaoTrinh" /></td>
+                        <td><input type="radio" value="2" name="AH_GiaoTrinh" /></td>
+                        <td><input type="radio" value="3" name="AH_GiaoTrinh" /></td>
+                        <td><input type="radio" value="4" name="AH_GiaoTrinh" /></td>
+                        <td><input type="radio" value="5" name="AH_GiaoTrinh" /></td>
+                        <td><input type="radio" value="6" name="AH_GiaoTrinh" /></td>
+                    </tr>
+                    <tr>
+                        <td>Học phí</td>
+                        <td><input type="radio" value="1" name="AH_HocPhi" /></td>
+                        <td><input type="radio" value="2" name="AH_HocPhi" /></td>
+                        <td><input type="radio" value="3" name="AH_HocPhi" /></td>
+                        <td><input type="radio" value="4" name="AH_HocPhi" /></td>
+                        <td><input type="radio" value="5" name="AH_HocPhi" /></td>
+                        <td><input type="radio" value="6" name="AH_HocPhi" /></td>
+                    </tr>
+                    <tr>
+                        <td>Lịch học</td>
+                        <td><input type="radio" value="1" name="AH_LichHoc" /></td>
+                        <td><input type="radio" value="2" name="AH_LichHoc" /></td>
+                        <td><input type="radio" value="3" name="AH_LichHoc" /></td>
+                        <td><input type="radio" value="4" name="AH_LichHoc" /></td>
+                        <td><input type="radio" value="5" name="AH_LichHoc" /></td>
+                        <td><input type="radio" value="6" name="AH_LichHoc" /></td>
+                    </tr>
+                    <tr>
+                        <td>Địa điểm</td>
+                        <td><input type="radio" value="1" name="AH_DiaDiem" /></td>
+                        <td><input type="radio" value="2" name="AH_DiaDiem" /></td>
+                        <td><input type="radio" value="3" name="AH_DiaDiem" /></td>
+                        <td><input type="radio" value="4" name="AH_DiaDiem" /></td>
+                        <td><input type="radio" value="5" name="AH_DiaDiem" /></td>
+                        <td><input type="radio" value="6" name="AH_DiaDiem" /></td>
+                    </tr>
+                    <tr>
+                        <td>Uy tín của trung tâm (theo đánh giá cá nhân/người thân giới thiệu/chứng nhận của các tổ chức quốc tế...)</td>
+                        <td><input type="radio" value="1" name="AH_UyTinTrungTam" /></td>
+                        <td><input type="radio" value="2" name="AH_UyTinTrungTam" /></td>
+                        <td><input type="radio" value="3" name="AH_UyTinTrungTam" /></td>
+                        <td><input type="radio" value="4" name="AH_UyTinTrungTam" /></td>
+                        <td><input type="radio" value="5" name="AH_UyTinTrungTam" /></td>
+                        <td><input type="radio" value="6" name="AH_UyTinTrungTam" /></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="form-group" id="10">
+            <p>
+                <strong>10. Khả năng phụ huynh chi trả cho việc học tiếng Anh hàng tháng của con?</strong>
+            </p>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="radio" value="1" name="ChiPhiHocTiengAnh" /> &lt;=650.000đ/tháng
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="radio" value="2" name="ChiPhiHocTiengAnh" /> 650.000 – 1.000.000đ/tháng
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="radio" value="3" name="ChiPhiHocTiengAnh" /> 1.000.000 – 1.500.000đ/tháng
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="radio" value="4" name="ChiPhiHocTiengAnh" /> Khác
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <p>
+                <strong>11. Quý vị quan tâm đến điều gì nữa trong việc học và dạy tiếng Anh cho con em mình?</strong>
+            </p>
+            <div class="col-sm-12">
+                <textarea name="QuanTamThem" class="form-control" rows="4"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <p>
+                <strong>Cảm ơn thông tin khảo sát của quý khách!</strong>
+            </p>
+            <p>Vui lòng lựa chọn chi nhánh để nhận quà</p>
+            <div class="col-sm-12">
+                @Html.DropDownListFor(a => a.SurveyChildren.OfficeId, Model.OfficeList, "Hãy chọn chi nhánh", new { @class = "form-control", required = "" })
+            </div>
+        </div>
+    </div>
+    <p class="text-center mt30">
+        <button type="submit" class="btn btn-ocean"><i class="fa fa-caret-right"></i> XÁC NHẬN VÀ GỬI THÔNG TIN</button>
+    </p>
+</form>
+
+<script>
+    function checkForm(form) {
+        if (!$("input[name='HocTiengAnhODau']").is(":checked")) {
+            alert("Bạn hãy chọn 1 tiêu chí tại câu số 1");
+            $('html, body').animate({
+                scrollTop: parseInt($("#1").offset().top)
+            }, 1000);
+            return false;
+        }
+        if (!$("input[name='DanhGiaTamQuanTrong']").is(":checked")) {
+            alert("Bạn hãy chọn 1 tiêu chí tại câu số 2");
+            $('html, body').animate({
+                scrollTop: parseInt($("#2").offset().top)
+            }, 1000);
+            return false;
+        }
+        if (!$("input[name='MucDichHocTiengAnh']").is(":checked")) {
+            alert("Bạn hãy chọn 1 tiêu chí tại câu số 3");
+            $('html, body').animate({
+                scrollTop: parseInt($("#3").offset().top)
+            }, 1000);
+            return false;
+        }
+        if (!$("input[name='TroNgaiHocTiengAnh']").is(":checked")) {
+            alert("Bạn hãy chọn 1 tiêu chí tại câu số 4");
+            $('html, body').animate({
+                scrollTop: parseInt($("#4").offset().top)
+            }, 1000);
+            return false;
+        }
+        if (!$("input[name='MongMuon']").is(":checked")) {
+            alert("Bạn hãy chọn 1 tiêu chí tại câu số 5");
+            $('html, body').animate({
+                scrollTop: parseInt($("#5").offset().top)
+            }, 1000);
+            return false;
+        }
+        if (!$("input[name='CanHoTroThem']").is(":checked")) {
+            alert("Bạn hãy chọn 1 tiêu chí tại câu số 6");
+            $('html, body').animate({
+                scrollTop: parseInt($("#6").offset().top)
+            }, 1000);
+            return false;
+        }
+        if (!$("input[name='YeuCauGiaoVien']").is(":checked")) {
+            alert("Bạn hãy chọn 1 tiêu chí tại câu số 7");
+            $('html, body').animate({
+                scrollTop: parseInt($("#7").offset().top)
+            }, 1000);
+            return false;
+        }
+        if (!$("input[name='ThoiGianHoc']").is(":checked")) {
+            alert("Bạn hãy chọn 1 tiêu chí tại câu số 8");
+            $('html, body').animate({
+                scrollTop: parseInt($("#8").offset().top)
+            }, 1000);
+            return false;
+        }
+        if (!$("input[name='AH_ChatLuongGiaoVien']").is(":checked")) {
+            alert("Bạn hãy chọn 1 tiêu chí tại câu số 9");
+            $('html, body').animate({
+                scrollTop: parseInt($("#9").offset().top)
+            }, 1000);
+            return false;
+        }
+        if (!$("input[name='AH_GiaoTrinh']").is(":checked")) {
+            alert("Bạn hãy chọn 1 tiêu chí tại câu số 9");
+            $('html, body').animate({
+                scrollTop: parseInt($("#9").offset().top)
+            }, 1000);
+            return false;
+        }
+        if (!$("input[name='AH_HocPhi']").is(":checked")) {
+            alert("Bạn hãy chọn 1 tiêu chí tại câu số 9");
+            $('html, body').animate({
+                scrollTop: parseInt($("#9").offset().top)
+            }, 1000);
+            return false;
+        }
+        if (!$("input[name='AH_LichHoc']").is(":checked")) {
+            alert("Bạn hãy chọn 1 tiêu chí tại câu số 9");
+            $('html, body').animate({
+                scrollTop: parseInt($("#9").offset().top)
+            }, 1000);
+            return false;
+        }
+        if (!$("input[name='AH_DiaDiem']").is(":checked")) {
+            alert("Bạn hãy chọn 1 tiêu chí tại câu số 9");
+            $('html, body').animate({
+                scrollTop: parseInt($("#9").offset().top)
+            }, 1000);
+            return false;
+        }
+        if (!$("input[name='AH_UyTinTrungTam']").is(":checked")) {
+            alert("Bạn hãy chọn 1 tiêu chí tại câu số 9");
+            $('html, body').animate({
+                scrollTop: parseInt($("#9").offset().top)
+            }, 1000);
+            return false;
+        }
+        if (!$("input[name='ChiPhiHocTiengAnh']").is(":checked")) {
+            alert("Bạn hãy chọn 1 tiêu chí tại câu số 10");
+            $('html, body').animate({
+                scrollTop: parseInt($("#10").offset().top)
+            }, 1000);
+            return false;
+        }
+        return true;
+    }
+</script>

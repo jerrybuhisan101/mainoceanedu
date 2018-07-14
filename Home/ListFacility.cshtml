@@ -1,0 +1,94 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Ocean2014.ViewModel.TeacherDto>
+@{
+    ViewBag.Title = "Cơ sở vật chất";
+}
+
+<div class="container mt30">
+    <div class="row">
+        @Html.Action("LeftAbout")
+        <div class="col-sm-8">
+            <div class="box-module-center" style="margin-top: -2px">
+                Cơ sở vật chất
+            </div>
+            <div class="row mt30">
+                @foreach (var teacherDto in Model.Take(3))
+                {
+                <div class="col-sm-4">
+                    <div class="box-img-teacher">
+                        <a href="@Url.Action("Teacher", new {teacherId = teacherDto.Id, name =Html.ConvertToUnSign(teacherDto.Name)})">
+                            <img src="@Path.Combine("/images/teacher", teacherDto.Image)" alt="@teacherDto.Name" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="box-name-teacher">
+                        <div class="name-teacher">
+                            <i class="icon-right-top"></i>
+                            @teacherDto.Name.ToUpper()<br />
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+            <div class="row mt30">
+                @foreach (var teacherDto in Model.Skip(3).Take(3))
+                {
+                <div class="col-sm-4">
+                    <div class="box-img-teacher">
+                        <a href="@Url.Action("Teacher", new {teacherId = teacherDto.Id, name =Html.ConvertToUnSign(teacherDto.Name)})">
+                            <img src="@Path.Combine("/images/teacher", teacherDto.Image)" alt="@teacherDto.Name" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="box-name-teacher">
+                        <div class="name-teacher">
+                            <i class="icon-right-top"></i>
+                            @teacherDto.Name.ToUpper()<br />
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+            <div class="row mt30">
+                @foreach (var teacherDto in Model.Skip(6).Take(3))
+                {
+                <div class="col-sm-4">
+                    <div class="box-img-teacher">
+                        <img src="@Path.Combine("/images/teacher", teacherDto.Image)" alt="@teacherDto.Name" class="img-responsive" />
+                    </div>
+                    <div class="box-name-teacher">
+                        <div class="name-teacher">
+                            <i class="icon-right-top"></i>
+                            @teacherDto.Name.ToUpper()<br />
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+            <div class="row mt30">
+                @foreach (var teacherDto in Model.Skip(9).Take(3))
+                {
+                    <div class="col-sm-4">
+                        <div class="box-img-teacher">
+                            <a href="@Url.Action("Teacher", new {teacherId = teacherDto.Id, name =Html.ConvertToUnSign(teacherDto.Name)})">
+                                <img src="@Path.Combine("/images/teacher", teacherDto.Image)" alt="@teacherDto.Name" class="img-responsive" />
+                            </a>
+                        </div>
+                        <div class="box-name-teacher">
+                            <div class="name-teacher">
+                                <i class="icon-right-top"></i>
+                                @teacherDto.Name.ToUpper()<br />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            @if (Model.PageCount > 1)
+            {
+                <div class="text-center">@Html.PagedListPager(Model, page => Url.Action("ListFacility", new { page }))</div>
+            }
+            <div class="mt30">
+                <div class="addthis_sharing_toolbox"></div>
+            </div>
+            <hr style="border-color: #ccc; " />
+        </div>
+    </div>
+</div>

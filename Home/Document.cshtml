@@ -1,0 +1,68 @@
+﻿@using PagedList.Mvc
+@model Ocean2014.ViewModel.CategoryDetailViewModel
+@{
+    ViewBag.Title = Resource.Document;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 mt30">
+            @if (Model.Newses.Any())
+            {
+                foreach (var news in Model.Newses)
+                {
+                    <div class="box-list-course">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="box-img-hover">
+                                    <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})">
+                                        <img src="@news.Image?w=262&h=170&mode=crop" alt="" class="img-responsive" />
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="icon-top-left"></div>
+                                <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})" class="news-title">@news.Subject</a>
+                                <p>@news.Description</p>
+                                <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})" class="label label-success pull-right">Xem tiếp</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                if (Model.Newses.PageCount > 1)
+                {
+                    <div class="text-center">@Html.PagedListPager(Model.Newses, page => Url.Action("Document", new { page }))</div>
+                }
+            }
+            else
+            {
+                <p class="alert alert-info">@Resource.Updating</p>
+            }
+        </div>
+        <div class="col-sm-3 mt30">
+            @Html.Action("RegisterForm")
+
+            <div class="box-related-bg">
+                @Resource.HotNews
+            </div>
+            @foreach (var news in Model.HotNewsDtos)
+            {
+                <div class="box-list-course">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="box-img-hover">
+                                <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})"><img src="@news.Image?w=360&h=200&mode=crop" alt="" class="img-responsive" /></a>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="icon-top-left"></div>
+                            <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})" class="news-title">@news.Subject</a>
+                            <p>@news.Description</p>
+                            <a href="@Url.Action("News", new {newsId = news.Id, name = Html.ConvertToUnSign(news.Subject), Culture})" class="label label-success pull-right">@Resource.SeeDetail</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

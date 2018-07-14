@@ -1,0 +1,20 @@
+﻿@model Ocean2014.ViewModel.LangAboutDetailModel
+@{
+    ViewBag.Title = Model.Subject;
+    ViewBag.Description ="Ocean Edu Trường Anh ngữ là một thương hiệu của Công ty Cổ phần Giáo dục Đại Dương tại Việt Nam . OCEAN EDU tự hào là một tổ chức giáo dục lớn với 100 % giáo viên nước ngoài của Trường Quản lý Đầu tư Lincoln Singapore là một phần của giáo dục nguồn nhân lực Human Capital Education Group .";
+    ViewBag.Keywords ="trung tâm tiếng anh cho trẻ em trong khoảng , Trường Việt Nam của tiếng Anh trong khoảng, học tiếng Anh tại Việt Nam ";
+}
+<div class="container mt30">
+    <div class="row">
+        <div class="col-sm-8 col-sm-push-4">
+            <div class="box-module-center-reserve" style="margin-top: -2px">
+                <h1>@Model.Subject</h1>
+            </div>
+            <div class="body-content">
+                @Html.Raw(Model.Body)
+            </div>
+            <div class="bg-bottom-box-center"></div>
+        </div>
+        @Html.Action("LeftAbout")
+    </div>
+</div>

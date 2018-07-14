@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Ocean2014.ViewModel.OfficeDto>
+<div class="container mt30 triggerAnimation animated" data-animate="fadeInUp">
+    <div class="module-name text-center">
+        <h2>@Resource.ListOffices</h2>
+    </div>
+    <div class="bg-top-office"></div>
+    <div class="line-office"></div>
+    <div class="row">
+        @foreach (var office in Model.Take(3))
+        {
+            <div class="col-sm-4 col-xs-6 hvr-float-shadow office-item">
+                <div class="caption-office">
+                    <div class="office-name font-myriad-pro-bold">
+                        <a href="@office.LinkAlbum">@office.Name</a>
+                    </div>
+                    <address class="font-dax-light">
+                        <i class="fa fa-map-marker"></i> @office.Address<br />
+                        <i class="fa fa-phone"></i> @office.Phone<br />
+                        <i class="fa fa-envelope-o"></i> @office.Email
+                    </address>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="line-office"></div>
+    <div class="row">
+        @foreach (var office in Model.Skip(3).Take(3))
+        {
+            <div class="col-sm-4 col-xs-6 hvr-float-shadow office-item">
+                <div class="caption-office">
+                    <div class="office-name font-myriad-pro-bold">
+                        <a href="@office.LinkAlbum">@office.Name</a>
+                    </div>
+                    <address class="font-dax-light">
+                        <i class="fa fa-map-marker"></i> @office.Address<br />
+                        <i class="fa fa-phone"></i> @office.Phone<br />
+                        <i class="fa fa-envelope-o"></i> @office.Email
+                    </address>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="line-office"></div>
+    <div class="row">
+        @foreach (var office in Model.Skip(6).Take(3))
+        {
+            <div class="col-sm-4 col-xs-6 hvr-float-shadow office-item">
+                <div class="caption-office">
+                    <div class="office-name font-myriad-pro-bold">
+                        <a href="@office.LinkAlbum">@office.Name</a>
+                    </div>
+                    <address class="font-dax-light">
+                        <i class="fa fa-map-marker"></i> @office.Address<br />
+                        <i class="fa fa-phone"></i> @office.Phone<br />
+                        <i class="fa fa-envelope-o"></i> @office.Email
+                    </address>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="news-line-1"></div>
+
+    <div class="text-center mt20 border-see-more">
+        <a href="javascript:;" onclick="showMoreOffice()" class="btn btn-sm btn-ocean font-dax-light hvr-shutter-out-vertical">Click để xem thêm<i class="fa fa-caret-down"></i></a>
+    </div>
+</div>

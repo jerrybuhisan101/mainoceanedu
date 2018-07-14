@@ -1,0 +1,129 @@
+﻿@using Ocean2014.ViewModel
+@model Ocean2014.Models.Atbl_Contact
+@{
+    ViewBag.Title = Resource.Contact;
+    ViewBag.Description = "Liên hệ với các chi nhánh của Ocean Edu để nhận được thông tin mới nhất về chương trình học và ưu đãi hấp dẫn";
+    ViewBag.Keywords = Resource.Contact;
+}
+<div class="container mt30">
+    <div class="body-content">
+        @Html.Raw(ViewBag.ContactInfo)
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="font-colossalis" style="font-size: 2.6rem; color: #0077b9">@Resource.CompanyName</h1>
+            <address>
+                Tòa nhà Ocean Edu, 204 Nguyễn Lương Bằng, Đống Đa, Hà Nội<br />
+                ĐT: <a href="tel:19006494">1900 6494</a> - <a href="tel:02473000333">02473 000 333</a>
+            </address>
+            <select class="form-control" name="OfficeId" onchange="showInfo(this.value)">
+                <option>Xem bản đồ chi nhánh Oean Edu</option>
+                @foreach (var office in (IEnumerable<OfficeDto>)ViewBag.Offices)
+                {
+                    <option value="@office.Id">@office.Name</option>
+                }
+            </select>
+            <div id="office-info">
+                @foreach (var office in (IEnumerable<OfficeDto>)ViewBag.Offices)
+                {
+                    <div data-office-id="@office.Id" style="display: none">
+                        <h3 class="font-dax-bold" style="font-size: 2rem;">@office.Name</h3>
+                        <address>
+                            @office.Address<br />
+                            ĐT: @office.Phone
+                        </address>
+                        <div id="maps" class="embed-responsive embed-responsive-4by3">
+                            @Html.Raw(office.GoogleMaps)
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="clearfix"></div>
+            <!-- <div id="maps" class="embed-responsive embed-responsive-4by3">
+                <iframe src="https://www.google.com/maps/d/embed?mid=zyKJNb4ruk1I.k6uLGgMj8kYA" width="640" height="480"></iframe>
+            </div> -->
+        </div>
+        <div class="col-md-6">
+            <div class="box9" style="padding: 20px;">
+                <h2 class="font-dax" style="font-size: 2rem; margin-top: 0; color: #0077b9; margin-bottom: 25px;">@Resource.Contact</h2>
+                <em class="text-muted small">@Resource.NoticeContact</em>
+                @if (ViewBag.Result == 1)
+            {
+                    <p class="alert alert-success mt5 small">@Resource.ContactSuccess</p>
+                }
+                <hr />
+                <form class="form-horizontal" method="POST" action="@Url.Action("Contact", new {Culture})">
+                    @Html.ValidationSummary(true)
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.LabelFor(a => a.OfficeId, new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(a => a.OfficeId, new SelectList((IEnumerable<OfficeDto>)ViewBag.Offices, "Id", "Name"), Resource.RequiredOffice, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(a => a.OfficeId)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(a => a.Contact_Name, new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(a => a.Contact_Name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(a => a.Contact_Name)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(a => a.Contact_Address, new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(a => a.Contact_Address, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(a => a.Contact_Address)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(a => a.Contact_Phone, new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(a => a.Contact_Phone, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(a => a.Contact_Phone)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(a => a.Contact_Email, new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(a => a.Contact_Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(a => a.Contact_Email)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(a => a.Contact_Subject, new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(a => a.Contact_Subject, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(a => a.Contact_Subject)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(a => a.Contact_Body, new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.TextAreaFor(a => a.Contact_Body, new { @class = "form-control", rows = 4 })
+                            @Html.ValidationMessageFor(a => a.Contact_Body)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-md-offset-3">
+                            <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check"></i> @Resource.Send</button>
+                            <button type="reset" class="btn btn-sm btn-link"><i class="fa fa-refresh"></i> @Resource.Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Action("OfficeList")
+@section scripts
+{
+    <script>
+        function showInfo(id) {
+            $("#office-info > div").hide();
+            $("*[data-office-id='" + id + "']").fadeIn();
+        }
+        $(".office-item:gt(8)").hide();
+        $(".line-office:gt(3)").hide();
+    </script>
+}

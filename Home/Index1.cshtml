@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Index1";
+}
+
+<div class="container mt30">
+    <div class="row">
+        @Html.Action("LeftAbout")
+        <div class="col-sm-9">
+            <div class="box-module-center" style="margin-top: -2px">
+                100% Giáo viên nước ngoài, Có chứng chỉ quốc tế
+            </div>
+            @for (var i = 0; i < 3; i++)
+            {
+                <div class="row mt30">
+                    <div class="col-sm-4">
+                        <div class="box-img-teacher">
+                            <img src="~/Content/images/skin/gv-1.jpg" alt="" class="img-responsive"/>
+                        </div>
+                        <div class="box-name-teacher">
+                            <div class="name-teacher">
+                                <i class="icon-right-top"></i>
+                                NGUYEN VAN HOANG. MR<br/>
+                                (Teaching Knowlege Test)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="box-img-teacher">
+                            <img src="~/Content/images/skin/gv-2.jpg" alt="" class="img-responsive"/>
+                        </div>
+                        <div class="box-name-teacher">
+                            <div class="name-teacher">
+                                <i class="icon-right-top"></i>
+                                NGUYEN VAN HOANG. MR<br/>
+                                (Teaching Knowlege Test)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="box-img-teacher">
+                            <img src="~/Content/images/skin/gv-3.jpg" alt="" class="img-responsive"/>
+                        </div>
+                        <div class="box-name-teacher">
+                            <div class="name-teacher">
+                                <i class="icon-right-top"></i>
+                                NGUYEN VAN HOANG. MR<br/>
+                                (Teaching Knowlege Test)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="mt30">
+                <div class="addthis_sharing_toolbox"></div>
+            </div>
+            <hr style="border-color: #ccc;"/>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Ocean2014.ViewModel.PictureDto>
+@{
+    ViewBag.Title = ViewBag.AlbumName;
+}
+<div class="container mt30">
+    <h1 id="default-title">@ViewBag.AlbumName</h1>
+    <div class="row" id="albums">
+        @foreach (var picture in Model)
+        {
+            <div class="col-sm-3">
+                <div class="box-album">
+                    <a href="@picture.Image" class="fancybox" rel="album">
+                        <img src="@picture.Image?w=300&h=300&mode=crop" alt="@picture.Name" class="img-responsive"/>
+                    </a>
+                    <div class="album-caption">
+                        @picture.Name
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section scripts
+{
+    <script>
+        $(function() {
+            $(".fancybox").fancybox();
+        })
+    </script>
+}

@@ -1,0 +1,50 @@
+﻿@model Ocean2014.ViewModel.AlbumDetailFacebookModel
+@{
+    ViewBag.Title = Model.AlbumName;
+}
+
+<div class="container mt30">
+    <h1 id="default-title">@Model.AlbumName</h1>
+    <hr />
+    <div class="row" id="albums">
+        @foreach (var facebookModel in Model.ItemDetailAlbumFacebookModels)
+        {
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="box-album facebook-album">
+                    <a href="@string.Format("https://graph.facebook.com/{0}/picture?access_token={1}", facebookModel.Id, Model.Token)" rel="album" class="box-album-img fancybox">
+                        <div style="background: url(@string.Format("https://graph.facebook.com/{0}/picture?access_token={1}", facebookModel.Id, Model.Token)) 0 50%/cover no-repeat; height: 250px; width: 100%">
+                        </div>
+                    </a>
+                    <div class="album-caption">
+                        <h2>@Html.CutString(facebookModel.PhotoName, 150)</h2>
+                    </div>
+                </div>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(Model.NextPage))
+        {
+            <div class="clearfix"></div>
+            <div class="text-center">
+                <a href="javascript:;" id="@Model.Next" onclick="loadMore('@Model.AlbumId', '@Model.Next')" class="btn btn-ocean">Xem thêm <i class="fa fa-angle-down"></i></a>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(function () {
+            $(".fancybox").fancybox();
+        });
+        function loadMore(albumId, tokenAfter) {
+            $("#" + tokenAfter).find("i").attr("class", "fa fa-spin fa-spinner");
+            $.get("/Home/LoadMorePhotoFacebook", { albumId, tokenAfter }, function (data) {
+                $("#albums").append(data);
+                $("#" + tokenAfter).parent().hide();
+
+            });
+        }
+
+    </script>
+}

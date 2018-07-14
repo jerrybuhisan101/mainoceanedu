@@ -1,0 +1,100 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Ocean2014.ViewModel.TeacherDto>
+@{
+    ViewBag.Title = Resource.SloganTeacher;
+    ViewBag.Description = Resource.SloganTeacher;
+    ViewBag.Keywords = Resource.SloganTeacher;
+}
+
+<div class="container mt30">
+    <div class="row">
+        <div class="col-sm-8 col-sm-push-4">
+            <div class="box-module-center" style="margin-top: -2px">
+                <h1>100% Giáo viên nước ngoài, Có chứng chỉ quốc tế</h1>
+            </div>
+            <div class="row mt30">
+                @foreach (var teacherDto in Model.Take(3))
+                {
+                    <div class="col-sm-4">
+                        <div class="box-img-teacher">
+                            <a href="@Url.Action("Teacher", new {teacherId = teacherDto.Id, name = Html.ConvertToUnSign(teacherDto.Name), Culture})">
+                                <img src="@Path.Combine("/images/teacher", teacherDto.Image)" alt="@teacherDto.Name" class="img-responsive" />
+                            </a>
+                        </div>
+                        <div class="box-name-teacher">
+                            <div class="name-teacher">
+                                <i class="icon-right-top"></i>
+                                @teacherDto.Name.ToUpper()<br />
+                                (@teacherDto.Job)
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="row mt30">
+                @foreach (var teacherDto in Model.Skip(3).Take(3))
+                {
+                    <div class="col-sm-4">
+                        <div class="box-img-teacher">
+                            <a href="@Url.Action("Teacher", new {teacherId = teacherDto.Id, name =Html.ConvertToUnSign(teacherDto.Name), Culture})">
+                                <img src="@Path.Combine("/images/teacher", teacherDto.Image)" alt="@teacherDto.Name" class="img-responsive" />
+                            </a>
+                        </div>
+                        <div class="box-name-teacher">
+                            <div class="name-teacher">
+                                <i class="icon-right-top"></i>
+                                @teacherDto.Name.ToUpper()<br />
+                                (@teacherDto.Job)
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="row mt30">
+                @foreach (var teacherDto in Model.Skip(6).Take(3))
+                {
+                    <div class="col-sm-4">
+                        <div class="box-img-teacher">
+                            <a href="@Url.Action("Teacher", new {teacherId = teacherDto.Id, name =Html.ConvertToUnSign(teacherDto.Name), Culture})"><img src="@Path.Combine("/images/teacher", teacherDto.Image)" alt="@teacherDto.Name" class="img-responsive" /></a>
+                        </div>
+                        <div class="box-name-teacher">
+                            <div class="name-teacher">
+                                <i class="icon-right-top"></i>
+                                @teacherDto.Name.ToUpper()<br />
+                                (@teacherDto.Job)
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="row mt30">
+                @foreach (var teacherDto in Model.Skip(9).Take(3))
+                {
+                    <div class="col-sm-4">
+                        <div class="box-img-teacher">
+                            <a href="@Url.Action("Teacher", new {teacherId = teacherDto.Id, name =Html.ConvertToUnSign(teacherDto.Name), Culture})">
+                                <img src="@Path.Combine("/images/teacher", teacherDto.Image)" alt="@teacherDto.Name" class="img-responsive" />
+                            </a>
+                        </div>
+                        <div class="box-name-teacher">
+                            <div class="name-teacher">
+                                <i class="icon-right-top"></i>
+                                @teacherDto.Name.ToUpper()<br />
+                                (@teacherDto.Job)
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            @if (Model.PageCount > 1)
+            {
+                <div class="text-center">@Html.PagedListPager(Model, page => Url.Action("ListTeacher", new { page }))</div>
+            }
+            <div class="mt30">
+                <div class="addthis_sharing_toolbox"></div>
+            </div>
+            <hr style="border-color: #ccc; " />
+        </div>
+        @Html.Action("LeftAbout")
+    </div>
+</div>

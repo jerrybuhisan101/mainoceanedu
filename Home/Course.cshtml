@@ -1,0 +1,58 @@
+﻿@model Ocean2014.ViewModel.CourseDetailViewModel
+@{
+    ViewBag.Title = Model.Course.Name;
+    ViewBag.Description = string.IsNullOrEmpty(Html.RemoveHtml(Model.Course.Body)) ? Model.Course.Name : Html.CutString(Html.RemoveHtml(Model.Course.Body), 150);
+    ViewBag.Keywords = Model.Course.Name;
+    ViewBag.ImageThumb = "http://ocean.edu.vn" + Path.Combine("/images/course/", Model.Course.Image);
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 mt30">
+            <ul class="breadcrumb">
+                <li><a href="/"><i class="fa fa-home"></i></a></li>
+                <li><a href="@Url.Action("GroupCourse", new { gId = Model.Course.GroupId, name = Html.ConvertToUnSign(Model.Course.GroupName), Culture })">@Model.Course.GroupName</a></li>
+                <li>@Model.Course.Name</li>
+            </ul>
+
+            <div class="box-module-center-reserve" style="margin-top: -2px">
+                <h1>@Model.Course.Name</h1>
+            </div>
+            <div class="body-content">@Html.Raw(Model.Course.Body)</div>
+            <div class="mt30 mb30">
+                <div class="addthis_native_toolbox"></div>
+            </div>
+            @Html.Action("RegisterForm")
+            <div class="fb-comments" data-href="@Request.Url" data-numposts="5" data-width="100%"></div>
+        </div>
+        <div class="col-sm-3 mt30">
+            @if (Model.Courses.Any())
+            {
+                <div class="box-related-bg">
+                    @Resource.ReleatedArticle
+                </div>
+                foreach (var course in Model.Courses)
+                {
+                    <div class="box-list-course">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="box-img-hover">
+                                    @if (course.Image != null)
+                                    {
+                                        <a href="@Url.Action("Course", new {courseId = course.Id, name = Html.ConvertToUnSign(course.Name), Culture})"><img src="@Path.Combine("/images/course/", course.Image)?w=262&h=140&mode=crop" alt="" class="img-responsive" /></a>
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="icon-top-left"></div>
+                                <a href="@Url.Action("Course", new {courseId = course.Id, name = Html.ConvertToUnSign(course.Name), Culture})" class="news-title">@course.Name</a>
+                                <p>@Html.CutString(Html.RemoveHtml(course.Body), 100)</p>
+                                <a href="@Url.Action("Course", new {courseId = course.Id, name = Html.ConvertToUnSign(course.Name), Culture})" class="label label-success pull-right">Xem tiếp</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

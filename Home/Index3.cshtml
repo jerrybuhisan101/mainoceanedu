@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Index3";
+}
+
+<div class="container">
+    <div class="col-sm-8 mt30">
+        @for (int i = 0; i < 5; i++)
+        {
+            <div class="box-list-course">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="box-img-hover">
+                            <img src="~/Content/images/skin/anh-14.jpg" alt="" class="img-responsive" />
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="icon-top-left"></div>
+                        <a href="" class="news-title font-colossalis">Tiếng Anh Trẻ em</a>
+                        <p>Giáo viên tại OCEAN EDU: 100% Giáo viên nước ngoài đóng vai trò quyết định thành công cho sản phẩm của OCEAN EDU. Hiện nay giáo viên của Ocean Edu bao gồm các Giáo viên bản ngữ. </p>
+                        <a href="" class="label label-success pull-right">Xem tiếp</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-sm-4 mt30">
+        <div class="bg-register-right font-dax-bold">
+            <i class="fa fa-user"></i> Đăng ký học online
+        </div>
+        <form class="form-horizontal">
+            <input type="text" class="form-control mt5" placeholder="Họ và tên" />
+            <input type="text" class="form-control mt5" placeholder="Địa chỉ" />
+            <input type="text" class="form-control mt5" placeholder="Ngày sinh" />
+            <input type="text" class="form-control mt5" placeholder="Nghề nghiệp" />
+            <input type="text" class="form-control mt5" placeholder="Điện thoại" />
+            <input type="text" class="form-control mt5" placeholder="Email" />
+            <select type="text" class="form-control mt5">
+                <option value="">Khóa học</option>
+            </select>
+            <select type="text" class="form-control mt5">
+                <option value="">Chi nhánh</option>
+            </select>
+            <div class="mt5">
+                <button type="button" class="btn btn-sm btn-danger">ĐĂNG KÝ <i class="fa fa-chevron-right"></i></button>
+                <button type="reset" class="btn btn-sm btn-link">NHẬP LẠI</button>
+            </div>
+        </form>
+    </div>
+</div>

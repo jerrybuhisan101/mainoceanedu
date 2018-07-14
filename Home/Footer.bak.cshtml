@@ -1,0 +1,89 @@
+﻿@model Ocean2014.ViewModel.HeaderViewModel
+<footer class="background-course" style="overflow: inherit; height: auto; margin-top: 30px;">
+    <div class="bg-footer-right">
+        <div class="container">
+            <div class="row mt30">
+                <div class="col-md-4 box-bottom-logo">
+                    <div class="box-img-bottom-logo">
+                        <img src="~/Content/images/skin/logo-bottom.jpg" alt="Ocean Edu" class="img-responsive img-rounded center-block" />
+                    </div>
+                    <div class="company-bottom">@Resource.CompanyName</div>
+                    <div class="brand-bottom">Ocean Edu Vietnam</div>
+                    <address class="add-bottom">
+                        @*<strong>Ocean Edu Times City Hà Nội</strong>*@<br/>
+                        Tòa nhà Ocean Edu, 204 Nguyễn Lương Bằng, Đống Đa, Hà Nội<br/>
+                        ĐT: 1900 6494 - 0473 000 333
+                    </address>
+                    <img src="~/Content/images/skin/hotline-bottom.png" width="140" alt="hotline"/>
+                </div>
+                <div class="col-md-8 hidden-xs">
+                    <hr style="margin-top: 0; border-color: #2cc2e8" />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="font-colossalis" style="color: #fff;">Học tiếng Anh Ocean</div>
+                            <ul class="list-bottom">
+                                @foreach (var groupCourse in Model.GroupCourses)
+                                {
+                                    <li><a href="@Url.Action("GroupCourse", new {gId = groupCourse.Id, name = Html.ConvertToUnSign(groupCourse.Name), Culture})">@groupCourse.Name</a></li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="font-colossalis" style="color: #fff;">Tiện ích Ocean Edu</div>
+                            <ul class="list-bottom">
+                                <li>
+                                    @if (Culture == "vi-VN")
+                                    {
+                                        <a href="http://ocean.edu.vn/vi-VN/tin-tuc/ban-tin-ocean-edu-183">@Resource.BanTinOcean</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="http://ocean.edu.vn/en-US/news/ban-tin-ocean-edu-183">@Resource.BanTinOcean</a>
+                                    }
+                                </li>
+                                <li><a href="@Url.Action("ListVideo")">Video</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="font-colossalis" style="color: #fff;">Giới thiệu</div>
+                            <ul class="list-bottom">
+                                @foreach (var about in Model.Abouts)
+                                {
+                                    <li><a href="@Url.Action("About", new {aboutId = about.Id, name = Html.ConvertToUnSign(about.Subject), Culture})">@about.Subject</a></li>
+                                }
+                            </ul>
+                        </div>
+                        @*<div class="col-md-3">
+                            <div class="font-colossalis" style="color: #fff;">Phương pháp LETS</div>
+                            <ul class="list-bottom">
+                                <li><a href="#">Phương pháp LETS</a></li>
+                                <li><a href="#">Vì sao Phương pháp LETS</a></li>
+                                <li><a href="#">10 lý do chọn Ocean</a></li>
+                                <li><a href="@Url.Action("ListTeacher", new {Culture})">Giáo viên - tinh hoa Ocean</a></li>
+                                <li><a href="#">Giúp bé học tiếng Anh tốt nhất</a></li>
+                                <li><a href="#">Giáo trình Islands</a></li>
+                            </ul>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="section-footer">
+                <div class="text-center" style="position: relative;">
+                    <a href="http://www.brightworld.co.uk/" target="blank"><img src="~/Content/images/skin/certifate.jpg" alt="Bristish Education" /></a>
+                    <div style="position: absolute; right: 0; top: 0">
+                        <div class="clearfix">
+                            <a href="https://www.facebook.com/OceanEduVietNam/" target="blank"><img src="~/Content/images/skin/social-icons_01.jpg" class="pull-left" alt="Facebook"/></a>
+                            <a href="https://www.linkedin.com/company/ocean-edu-vi%E1%BB%87t-nam?trk=biz-companies-cym" target="blank"><img src="~/Content/images/skin/social-icons_02.jpg" class="pull-left" alt="Linkedin"/></a>
+                            <a href="https://www.youtube.com/channel/UCutkhO_UB3kTuPtJCiaQY-g" target="blank"><img src="~/Content/images/skin/social-icons_03.jpg" class="pull-left" alt="Youtube Channel"/></a>
+                            <a href=""><img src="~/Content/images/skin/social-icons_04.jpg" class="pull-left" alt="Rss"/></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="font-dax" style="color: #7ACEDA">
+                Copyright © 2015 Ocean Edu Vietnam | Tuyên bố từ chối | Bảo mật | Khả năng truy cập | Phản hồi cho website | Thông cáo báo chí | Sitemap
+                ABN 49 781 030 034 | CRICOS provider number: 00122A
+            </p>
+        </div>
+    </div>
+</footer>

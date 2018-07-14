@@ -1,0 +1,38 @@
+﻿@model Ocean2014.ViewModel.ListCourseViewModel
+@{
+    ViewBag.Title = Model.GroupCourse.Name;
+    ViewBag.Description = Model.GroupCourse.Name;
+    ViewBag.Keywords = Model.GroupCourse.Name;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 mt30">
+            <h1 id="default-title" class="font-colossalis">@Model.GroupCourse.Name</h1>
+            @foreach (var course in Model.Courses)
+            {
+                <div class="box-list-course">
+                    <div class="row">
+                        <div class="col-sm-4 col-xs-6">
+                            <div class="box-img-hover">
+                                @if (course.Image != null)
+                                {
+                                    <a href="@Url.Action("Course", new {courseId = course.Id, name = Html.ConvertToUnSign(course.Name), Culture})"><img src="@Path.Combine("/images/course/", course.Image)?w=262&h=140&mode=crop" alt="@course.Name" class="img-responsive"/></a>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-xs-6">
+                            <div class="icon-top-left"></div>
+                            <h2><a href="@Url.Action("Course", new {courseId = course.Id, name = Html.ConvertToUnSign(course.Name), Culture})" class="news-title">@course.Name</a>
+                            </h2>
+                            <p>@Html.CutString(Html.RemoveHtml(course.Body), 100)</p>
+                            <a href="@Url.Action("Course", new {courseId = course.Id, name = Html.ConvertToUnSign(course.Name), Culture})" class="label label-success pull-right">Xem tiếp</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-3 mt30">
+            @Html.Action("RegisterForm")
+        </div>
+    </div>
+</div>

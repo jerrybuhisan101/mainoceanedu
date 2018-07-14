@@ -1,0 +1,35 @@
+﻿@model Ocean2014.ViewModel.RegCourse
+@{
+    var sr = new StreamReader(Server.MapPath("/images/contact/reginfo.txt"));
+    var regInfo = sr.ReadToEnd();
+    sr.Close();
+}
+<div class="bg-register-right font-dax-bold">
+    <i class="fa fa-user"></i> @Resource.RegiserFree
+</div>
+<div class="body-content">
+    @Html.Raw(regInfo)
+</div>
+<form id="register-right" action="@Url.Action("RegisterOnline", new {Culture})" method="POST" class="form-horizontal">
+    @Html.AntiForgeryToken()
+    @Html.TextBoxFor(a => a.FullName, new { @class = "form-control mt5", placeholder = Resource.FullName })
+    @Html.ValidationMessageFor(a => a.FullName)
+    @*@Html.TextBoxFor(a => a.Address, new { @class = "form-control mt5", placeholder = Resource.Address })
+    @Html.ValidationMessageFor(a => a.Address)
+    @Html.TextBoxFor(a => a.Birthday, new { @class = "form-control mt5", placeholder = Resource.Birthday, type = "number" })
+    @Html.ValidationMessageFor(a => a.Birthday)
+    @Html.TextBoxFor(a => a.Job, new { @class = "form-control mt5", placeholder = Resource.Job })
+    @Html.ValidationMessageFor(a => a.Job)*@
+    @Html.TextBoxFor(a => a.Mobile, new { @class = "form-control mt5", placeholder = Resource.Mobile })
+    @Html.ValidationMessageFor(a => a.Mobile)
+    @Html.TextBoxFor(a => a.Email, new { @class = "form-control mt5", placeholder = "Email" })
+    @Html.ValidationMessageFor(a => a.Email)
+    @Html.DropDownListFor(a => a.CourseId, Model.CourseList, Resource.Course, new { @class = "form-control mt5" })
+    @Html.ValidationMessageFor(a => a.CourseId)
+    @Html.DropDownListFor(a => a.OfficeId, Model.OfficeList, Resource.Office, new { @class = "form-control mt5" })
+    @Html.ValidationMessageFor(a => a.OfficeId)
+    <div class="mt5">
+        <button type="submit" class="btn btn-sm btn-danger">@Resource.Register<i class="fa fa-chevron-right"></i></button>
+        <button type="reset" class="btn btn-sm btn-link">@Resource.Reset</button>
+    </div>
+</form>

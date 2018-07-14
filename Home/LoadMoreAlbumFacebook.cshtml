@@ -1,0 +1,23 @@
+﻿@model Ocean2014.ViewModel.AlbumFacebookModel
+@foreach (var facebookModel in Model.ItemAlbumFacebookModels)
+{
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="box-album facebook-album">
+            <a href="@Url.Action("AlbumDetailFacebook", new{name=Html.ConvertToUnSign(facebookModel.AlbumName), albumId = facebookModel.Id, Culture})" class="box-album-img">
+                <div style="background: url(@string.Format("https://graph.facebook.com/{0}/picture?access_token={1}", facebookModel.CoverPhotoId, Model.Token)) 0 50%/cover no-repeat; height: 250px; width: 100%">
+                </div>
+                <div class="count-img"><i class="fa fa-image"></i> @facebookModel.Count</div>
+            </a>
+            <div class="album-caption">
+                <a href="@Url.Action("AlbumDetailFacebook", new{name=Html.ConvertToUnSign(facebookModel.AlbumName), albumId = facebookModel.Id, Culture})">@facebookModel.AlbumName</a>
+            </div>
+        </div>
+    </div>
+}
+@if (!string.IsNullOrEmpty(Model.NextPage))
+{
+    <div class="clearfix"></div>
+    <div class="text-center">
+        <a href="javascript:;" id="@Model.Next" onclick="loadMore('@Model.Next')" class="btn btn-ocean">Xem thêm <i class="fa fa-angle-down"></i></a>
+    </div>
+}

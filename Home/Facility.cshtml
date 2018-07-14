@@ -1,0 +1,80 @@
+﻿@model Ocean2014.ViewModel.TeacherDetailViewModel
+@{
+    ViewBag.Title = Model.TeacherDto.Name;
+}
+
+<div class="container mt30">
+    <div class="row">
+        @Html.Action("LeftAbout")
+        <div class="col-sm-8">
+            <div class="box-module-center-reserve" style="margin-top: -2px">
+                Cơ sở vật chất
+            </div>
+            <div class="box-content-gv">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="box-avartar-teacher">
+                            <div class="box-img-teaher-content">
+                                <img src="@Path.Combine("/images/teacher", Model.TeacherDto.Image)" alt="@Model.TeacherDto.Name" class="img-responsive" />
+                            </div>
+                            <div class="name-teacher teacher-name-content">
+                                <i class="icon-right-top"></i>
+                                @Model.TeacherDto.Name<br />
+                                @Model.TeacherDto.Job
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="box-content-border-top">
+                            <div class="box-content-detail-gv" style="height: 300px">
+                                @Html.Raw(Model.TeacherDto.Body)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-bottom-box-center"></div>
+            <div class="box-related-bg">
+                Cơ sở vật chất khác
+            </div>
+            <div class="row mt30">
+                @foreach (var teacherDto in Model.TeacherDtos.Take(3))
+                {
+                    <div class="col-sm-4">
+                        <div class="box-img-teacher">
+                            <a href="@Url.Action("Teacher", new {teacherId = teacherDto.Id, name =Html.ConvertToUnSign(teacherDto.Name)})">
+                                <img src="@Path.Combine("/images/teacher", teacherDto.Image)" alt="@teacherDto.Name" class="img-responsive" />
+                            </a>
+                        </div>
+                        <div class="box-name-teacher">
+                            <div class="name-teacher">
+                                <i class="icon-right-top"></i>
+                                @teacherDto.Name.ToUpper()<br />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="row mt30">
+                @foreach (var teacherDto in Model.TeacherDtos.Skip(3).Take(3))
+                {
+                    <div class="col-sm-4">
+                        <div class="box-img-teacher">
+                            <a href="@Url.Action("Teacher", new {teacherId = teacherDto.Id, name =Html.ConvertToUnSign(teacherDto.Name)})">
+                                <img src="@Path.Combine("/images/teacher", teacherDto.Image)" alt="@teacherDto.Name" class="img-responsive" />
+                            </a>
+                        </div>
+                        <div class="box-name-teacher">
+                            <div class="name-teacher">
+                                <i class="icon-right-top"></i>
+                                @teacherDto.Name.ToUpper()<br />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+
