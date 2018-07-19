@@ -44,10 +44,14 @@ li#wp-admin-bar-happythemes{
  }   
 
  .navxt {
- 	margin-top: 8px;
-    margin-bottom: -13px;
-    font-size: 14px;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    font-size: 19px;
     font-weight: bold;
+ }
+
+ .navxt span a {
+ 	text-decoration: underline !important;
  }
 
  .elementor-6{

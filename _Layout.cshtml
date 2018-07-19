@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@Html.Raw(ViewBag.Title) | Anh Ngữ Ocean Edu</title>
+    <meta name="description" content="@Html.Raw(ViewBag.Description)" />
+    <meta name="keywords" content="@Html.Raw(ViewBag.Keywords)" />
+
+    <link rel="alternate" href="http://ocean.edu.vn/vi-VN/" hreflang="vi-vn" />
+    <link rel="alternate" href="http://en.ocean.edu.vn/vi-vn/" hreflang="en-vn" />
+    <link rel="alternate" href="http://en.ocean.edu.vn/en-us/" hreflang="en-ph" />
+    <link rel="alternate" href="http://en.ocean.edu.vn/en-us/" hreflang="en-gb" />
+    <link rel="alternate" href="http://en.ocean.edu.vn/en-us/" hreflang="en-us" />
+    <link rel="alternate" href="http://en.ocean.edu.vn/en-us/" hreflang="en-au" />
+    <link rel="alternate" href="http://ocean.edu.vn/" hreflang="vi" />
+    <link rel="alternate" href="http://en.ocean.edu.vn/" hreflang="en" />
+
+    @Styles.Render("~/Content/css2")
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700&subset=vietnamese,latin-ext' rel='stylesheet' type='text/css'>
+    @* customized canonicalization*@
+    @if (Request.Url.AbsoluteUri == "http://ocean.edu.vn/vi-VN")
+    {
+        <link rel="canonical" href="http://ocean.edu.vn/" />
+
+    }
+    else if (Request.Url.AbsoluteUri == "http://ocean.edu.vn/document?Culture=vi-VN" || Request.Url.AbsoluteUri == "http://ocean.edu.vn/document?page=1" || Request.Url.AbsoluteUri == "http://ocean.edu.vn/document?page=2" || Request.Url.AbsoluteUri == "http://ocean.edu.vn/document?page=3")
+    {
+        <link rel="canonical" href="http://ocean.edu.vn/document?Culture=vi-VN" />
+    }
+
+    else if (Request.Url.AbsoluteUri == "http://ocean.edu.vn/videos" || Request.Url.AbsoluteUri == "http://ocean.edu.vn/videos?page=1" || Request.Url.AbsoluteUri == "http://ocean.edu.vn/videos?page=2" || Request.Url.AbsoluteUri == "http://ocean.edu.vn/videos?page=3" || Request.Url.AbsoluteUri == "http://ocean.edu.vn/videos?page=4" || Request.Url.AbsoluteUri == "http://ocean.edu.vn/videos?page=5" || Request.Url.AbsoluteUri == "http://ocean.edu.vn/videos?page=6" || Request.Url.AbsoluteUri == "http://ocean.edu.vn/videos?page=7")
+    {
+        <link rel="canonical" href="http://ocean.edu.vn/videos" />
+    }
+    else if (Request.Url.AbsoluteUri == "http://ocean.edu.vn/vi-VN/tin-tuc/bo-dia-cd-let-s-go-1a-10264.html" || Request.Url.AbsoluteUri == "http://ocean.edu.vn/vi-VN/tin-tuc/bo-dia-cd-let-s-go-1a-4th-edition-10264.html")
+
+    {
+        <link rel="canonical" href="http://ocean.edu.vn/vi-VN/tin-tuc/bo-dia-cd-let-s-go-1a-10264.html" />
+    }
+    else if (Request.Url.AbsoluteUri == "http://ocean.edu.vn/vi-VN/tin-tuc/bo-dia-cd-let-s-go-3-10352.html" || Request.Url.AbsoluteUri == "http://ocean.edu.vn/vi-VN/tin-tuc/bo-dia-cd-let-s-go-3-4th-edition-10352.html")
+    {
+        <link rel="canonical" href="http://ocean.edu.vn/vi-VN/tin-tuc/bo-dia-cd-let-s-go-3-10352.html" />
+    }
+    else if (Request.Url.AbsoluteUri == "http://ocean.edu.vn/vi-VN/khoa-hoc/anh-van-thieu-nhi-tu-11-16-tuoi-2.html" || Request.Url.AbsoluteUri == "http://ocean.edu.vn/vi-VN/khoa-hoc/anh-van-thieu-nien-11-16-tuoi-2.html")
+    {
+        <link rel="canonical" href="http://ocean.edu.vn/vi-VN/khoa-hoc/anh-van-thieu-nhi-tu-11-16-tuoi-2.html" />
+    }
+    else if (Request.Url.AbsoluteUri == "http://ocean.edu.vn/vi-VN/tin-tuc/ket-qua-hoc-tap-ocean-yen-bai-202" || Request.Url.AbsoluteUri == "http://ocean.edu.vn/vi-VN/tin-tuc/ket-qua-thi-ocean-yen-bai-202")
+    {
+
+        <link rel="canonical" href="http://ocean.edu.vn/vi-VN/tin-tuc/ket-qua-hoc-tap-ocean-yen-bai-202" />
+    }
+    else if (Request.Url.AbsoluteUri == "http://ocean.edu.vn/vi-VN/tin-tuc/ly-do-hoc-tieng-anh-nhieu-nhung-khong-hieu-qua-10184.html" || Request.Url.AbsoluteUri == "http://ocean.edu.vn/vi-VN/tin-tuc/ly-do-hoc-tieng-anh-nhieu-nhung-khong-hieu-qua-10184.html?fb_comment_id=865370663582516_941248355994746#f2cf5bbd23fc67c" || Request.Url.AbsoluteUri == "http://ocean.edu.vn/vi-VN/tin-tuc/tai-sao-toi-hoc-tieng-anh-nhieu-nhung-khong-hieu-qua-10184.html")
+    {
+        <link rel="canonical" href="http://ocean.edu.vn/vi-VN/tin-tuc/ly-do-hoc-tieng-anh-nhieu-nhung-khong-hieu-qua-10184.html" />
+    }
+
+    else if (Request.Url.AbsoluteUri == "http://ocean.edu.vn/vi-VN/tin-tuc/lich-khai-giang-du-kien-thang-03-2016-ocean-thai-nguyen-10587.html?fb_comment_id=985525668204132_1017342365022462#f3d805366264964" || Request.Url.AbsoluteUri == "http://ocean.edu.vn/vi-VN/tin-tuc/lich-khai-giang-du-kien-thang-03-2016-ocean-thai-nguyen-10587.html?fb_comment_id=985525668204132_1001383376618361#f2e7fb9c6c4a9a")
+
+    {
+
+        <link rel="canonical" href="http://ocean.edu.vn/vi-VN/tin-tuc/lich-khai-giang-du-kien-thang-03-2016-ocean-thai-nguyen-10587.html?fb_comment_id=985525668204132_1017342365022462#f3d805366264964" />
+    }
+    else if (Request.Url.AbsoluteUri == "http://ocean.edu.vn/vi-VN/tin-tuc/lich-khai-giang-ocean-edu-xuan-mai-219" || Request.Url.AbsoluteUri == "http://ocean.edu.vn/vi-VN/tin-tuc/lich-khai-giang-ocean-xuan-mai-219")
+    {
+        <link rel="canonical" href="http://ocean.edu.vn/vi-VN/tin-tuc/lich-khai-giang-ocean-edu-xuan-mai-219" />
+    }
+    else
+
+    {
+        <link rel="canonical" href="@Request.Url.AbsoluteUri" />
+    }
+    @* customized canonicalization*@
+    <meta name="google-site-verification" content="lTm--6tWebpGUxfyDdJCMynL4B-aXivEA6yQkowKV_w" />
+    <meta property="fb:app_id" content="1514932012164173" />
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="@Html.Raw(ViewBag.Title)  | Trung tâm tiếng Anh | OCEAN EDU">
+    <meta property="og:description" content="@Html.Raw(ViewBag.Description)">
+    <meta property="og:url" content="@Request.Url">
+    <meta property="og:site_name" content="Ocean EDU">
+    @if (Request.Url.AbsoluteUri == "http://ocean.edu.vn/vi-VN/khoa-hoc/luyen-thi-ielts-toefl-toeic-b1-b2-c1-2")
+    {
+        <meta property="og:image" content="http://ocean.edu.vn/images/course/130916136102997831.JPG">
+    }
+    else
+    {
+        <meta property="og:image" content="@ViewBag.ImageThumb">
+    }
+
+    <!--Google Analytics code Goc-->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] ||
+                function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-76873741-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <!--Google Analytics code Goc-->
+    <!--Google Analytics code 02-->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-96453956-1', 'auto', 'myTracker');
+        ga('myTracker.send', 'pageview');
+
+    </script>
+    <!--Google Analytics code 02-->
+    <!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1895514120716909'); // Insert your pixel ID here.
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1895514120716909&ev=PageView&noscript=1"
+/></noscript>
+<!-- DO NOT MODIFY -->
+<!-- End Facebook Pixel Code -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MJXWPRQ');</script>
+<!-- End Google Tag Manager -->
+
+</head>
+<body>
+
+<!-- Google Code for Theo Doi GDN Conversion Page 19-03-2018 -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 819792794;
+var google_conversion_label = "aiT1CKDrh3wQmpf0hgM";
+var google_remarketing_only = false;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/819792794/?label=aiT1CKDrh3wQmpf0hgM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<!-- Google Code for Theo Doi GDN Conversion Page 19-03-2018 -->
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJXWPRQ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    @Html.Action("Header", "Home")
+    @RenderBody()
+    @Html.Action("Footer", "Home")
+    @*<iframe src="http://124.158.4.252/mobileads/?id=aWQ9NjY2MjQmcGFzcz12aW5hZHNwcm8" style="display: none;"></iframe>*@
+    <div id="fb-root"></div>
+    @Scripts.Render("~/bundles/jquery", "~/bundles/jqueryval", "~/bundles/bootstrap")
+    <script src="//code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
+    @Scripts.Render("~/bundles/mainJs")
+    <script>main();</script>
+    @RenderSection("scripts", false)
+
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4db588be49b74587" async="async"></script>
+    <script type="text/javascript" src="//media1.admicro.vn/cpa/admicro.js"></script>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1514932012164173";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        window.admicro_cpa_q = window.admicro_cpa_q || [];
+        window.admicro_cpa_q.push({ event: "retargeting", id: 1072 });
+
+        /* <![CDATA[ */
+        var google_conversion_id = 948772037;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+
+        
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+    <noscript>
+        <div style="display: inline;">
+            <img height="1" width="1" style="border-style: none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/948772037/?value=0&amp;guid=ON&amp;script=0" />
+        </div>
+    </noscript>
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            }; if (!f._fbq) f._fbq = n;
+            n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+        }(window,
+        document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+
+        fbq('init', '101646166919769');
+        fbq('track', "PageView");
+    </script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5ac81a7e4b401e45400e6c34/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+    <noscript>
+        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=101646166919769&ev=PageView&noscript=1" />
+    </noscript>
+
+    <!-- Google Code for Remarketing Tag -->
+    <!--------------------------------------------------
+    Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
+    --------------------------------------------------->
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var google_conversion_id = 1011121178;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+    <noscript>
+        <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1011121178/?guid=ON&amp;script=0" />
+        </div>
+    </noscript>
+    <!-- Google Code for Remarketing Tag -->
+
+</body>
+</html>
