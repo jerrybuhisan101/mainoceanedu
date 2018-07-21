@@ -131,6 +131,10 @@
   gtag('config', 'UA-109716189-6');
 </script>
 
+<!-- MailMunch Code -->
+<!-- Paste this code right before the </head> tag on every page of your site. -->
+<script src="//a.mailmunch.co/app/v1/site.js" id="mailmunch-script" data-mailmunch-site-id="518954" async="async"></script>
+
 </head>
 
 <body <?php body_class(); ?>>
